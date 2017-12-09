@@ -8,17 +8,19 @@ const Header = styled.div`
 
 const Container = styled.section`
   height: 100%;
-  width: 400px;
+  width: 100%;
 `
 
 const LeftButton = styled.div`
   flex: 1;
   cursor: pointer;
+  font-size: 2rem;
 `
 
 const Title = styled.div`
   flex: 1;
   text-align: center;
+  font-size: 2.15rem;
 `
 
 const RightButton = styled.div`
@@ -28,6 +30,8 @@ const RightButton = styled.div`
 const Body = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2rem;
+  margin-top: 2rem;
 `
 
 const Layout = ({ onBack, children }) => (
