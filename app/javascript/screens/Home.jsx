@@ -43,7 +43,7 @@ const Home = props => (
       </h1>
     </HeaderContainer>
     <NavContainer>
-      <Link to="/looking-for-help">
+      <Link to="/looking_for_help">
         <NavigationCard>
           I Need Help
         </NavigationCard>

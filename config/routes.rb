@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'logout' => 'user_sessions#destroy', :as => :logout
   get 'signup' => 'users#new', as: :signup
 
-  get 'looking-for-help', to: 'static#home'
+  get 'looking_for_help', to: 'static#home'
   get 'helping', to: 'static#home'
   root to: 'static#home'
 end

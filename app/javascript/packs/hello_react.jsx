@@ -25,7 +25,8 @@ const App = props => (
   <BrowserRouter>
     <AppContainer>
       <Route exact path="/" component={Home} />
-      <Route exact path="/looking-for-help" component={LookingForHelp} />
+      <Route exact path="/looking_for_help" component={LookingForHelp} />
+      <Route exact path="/looking_for_help/food_and_water" component={LookingForHelp} />
       <Route exact path="/helping" component={Helping} />
     </AppContainer>
   </BrowserRouter>
