@@ -12,11 +12,16 @@
 
   <body>
     <% if current_user %>
-        <%= link_to 'Logout', :logout, method: :post %>
-      <% else %>
-        <%= link_to 'Login', :login %>
-        <%= link_to 'Sign Up', :signup %>
-      <% end %>
+      <%= link_to 'Logout', :logout, method: :post %>
+    <% else %>
+      <%= link_to 'Login', :login %>
+      <%= link_to 'Sign Up', :signup %>
+    <% end %>
+    <% if current_user && !current_user.verified %>
+      <%= link_to "Verfiy your account", verify_user_path(current_user) %>
+      OR
+      <%= link_to "Resend verification", resend_verification_user_path(current_user) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -16,6 +16,7 @@ gem 'puma'
 gem 'sass-rails'
 gem 'sorcery'
 gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'uglifier'
 gem 'webpacker'
 
