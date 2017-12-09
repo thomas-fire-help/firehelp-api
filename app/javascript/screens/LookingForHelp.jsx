@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Layout from '../components/Layout'
 
 const Container = styled.div`
   display: flex;
@@ -35,13 +36,8 @@ const Footer = styled.footer`
   text-align: center;
 `
 
-const Home = props => (
-  <Container>
-    <HeaderContainer>
-      <h1>
-        Thomas Fire Help
-      </h1>
-    </HeaderContainer>
+const Home = ({ history: { goBack }}) => (
+  <Layout onBack={goBack}>
     <NavContainer>
       <Link to="looking_for_help/food_and_water">
         <NavigationCard>
@@ -62,7 +58,7 @@ const Home = props => (
     <Footer>
       In event of Emergency, call 911
     </Footer>
-  </Container>
+  </Layout>
 )
 
 export default Home

@@ -5,12 +5,14 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  height: 90%;
 `
 
 const HeaderContainer = styled.div`
   align-self: flex-start;
   flex: 1;
   text-transform: uppercase;
+  font-size: 2rem;
 `
 
 const NavContainer = styled.nav`
@@ -19,10 +21,11 @@ const NavContainer = styled.nav`
 
 const NavigationCard = styled.section`
   margin-top: 20px;
-  padding: 35px 15px;
+  padding: 4rem 6em;
   border: 1px solid black;
   text-transform: uppercase;
   text-align: center;
+  font-size: 2rem;
 `
 
 const TranslateLink = styled.aside`
