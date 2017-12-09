@@ -13,10 +13,6 @@ const HeaderContainer = styled.div`
   text-transform: uppercase;
 `
 
-const SelectionContainer = styled.nav`
-  flex: 4;
-`
-
 const NavigationCard = styled.section`
   margin-top: 20px;
   padding: 35px 15px;
@@ -32,12 +28,6 @@ const Category = styled(Link)`
   text-decoration: none;
 `
 
-const TranslateLink = styled.aside`
-  display: block;
-  text-align: center;
-  padding: 35px 15px;
-`
-
 const Footer = styled.footer`
   text-align: center;
 `
@@ -49,7 +39,7 @@ const Home = props => (
         WHAT KIND OF HELP?
       </h1>
     </HeaderContainer>
-    <Category to="/">
+    <Category to="looking_for_help/food_and_water">
       FOOD & WATER
     </Category>
     <Category to="/">
@@ -58,7 +48,7 @@ const Home = props => (
     <Category to="/">
       CLOTHING
     </Category>
-    <Category to="/">
+    <Category to="/shelter">
       HOUSING
     </Category>
     <Category to="/">

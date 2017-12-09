@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :verify, :verify_post, :resend_verification]
 
   # GET /users
   # GET /users.json
@@ -29,12 +29,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save
+      if @user.save && @user.generate_pin && @user.send_pin
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,6 +59,27 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def resend_verification
+    @user.generate_pin
+    @user.send_pin
+    redirect_to :back
+  end
+
+  def verify
+  end
+
+  def verify_post
+    if @user.verify(params[:pin].to_i)
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully verified.' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to verify_user_path(@user), notice: 'Incorrect Verification' }
+      end
     end
   end
 
