@@ -19,6 +19,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'sass-rails'
 gem 'simple_command'
 gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'uglifier'
 gem 'webpacker'
 
