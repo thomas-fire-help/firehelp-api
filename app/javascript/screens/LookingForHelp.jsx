@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Layout from '../components/Layout'
 
 const Container = styled.div`
   display: flex;
@@ -32,35 +33,37 @@ const Footer = styled.footer`
   text-align: center;
 `
 
-const Home = props => (
-  <Container>
-    <HeaderContainer>
-      <h1>
-        WHAT KIND OF HELP?
-      </h1>
-    </HeaderContainer>
-    <Category to="looking_for_help/food_and_water">
-      FOOD & WATER
-    </Category>
-    <Category to="/">
-      EMERGENCY SUPPLIES
-    </Category>
-    <Category to="/">
-      CLOTHING
-    </Category>
-    <Category to="/shelter">
-      HOUSING
-    </Category>
-    <Category to="/">
-      PERSONAL CARE ITEMS
-    </Category>
-    <Category to="/">
-      ANIMAL SERVICES
-    </Category>
-    <Category to="/">
-      HEALTH AND WELLNESS
-    </Category>
-  </Container>
+const Home = ({ history: { goBack }}) => (
+  <Layout onBack={goBack}>
+    <Container>
+      <HeaderContainer>
+        <h1>
+          WHAT KIND OF HELP?
+        </h1>
+      </HeaderContainer>
+      <Category to="looking_for_help/food_and_water">
+        FOOD & WATER
+      </Category>
+      <Category to="/">
+        EMERGENCY SUPPLIES
+      </Category>
+      <Category to="/">
+        CLOTHING
+      </Category>
+      <Category to="/shelter">
+        HOUSING
+      </Category>
+      <Category to="/">
+        PERSONAL CARE ITEMS
+      </Category>
+      <Category to="/">
+        ANIMAL SERVICES
+      </Category>
+      <Category to="/">
+        HEALTH AND WELLNESS
+      </Category>
+    </Container>
+  </Layout>
 )
 
 export default Home
