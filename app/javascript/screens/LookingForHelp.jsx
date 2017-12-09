@@ -12,6 +12,7 @@ const HeaderContainer = styled.div`
   align-self: flex-start;
   flex: 1;
   text-transform: uppercase;
+  font-size: 2.25rem;
 `
 
 const NavigationCard = styled.section`
@@ -24,7 +25,7 @@ const NavigationCard = styled.section`
 
 const Category = styled(Link)`
   color: #000;
-  font-size: 20px;
+  font-size: 2rem;
   padding: 25px 0px;
   text-decoration: none;
 `

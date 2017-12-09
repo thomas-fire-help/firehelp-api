@@ -4,6 +4,8 @@ import styled from 'styled-components'
 const Header = styled.div`
   display: flex;
   align-items: center;
+  padding-left: 2em;
+  padding-right: 2em;
 `
 
 const Container = styled.section`
@@ -14,13 +16,13 @@ const Container = styled.section`
 const LeftButton = styled.div`
   flex: 1;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `
 
 const Title = styled.div`
   flex: 1;
   text-align: center;
-  font-size: 2.15rem;
+  font-size: 1.5rem;
 `
 
 const RightButton = styled.div`
@@ -31,7 +33,6 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  margin-top: 2rem;
 `
 
 const Layout = ({ onBack, children }) => (
