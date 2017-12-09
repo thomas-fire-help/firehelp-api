@@ -1,5 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_request, only: %i[login register]
+
+  def login
+    authenticate params[:login], params[:password]
+  end
+
+  def register
+    @user = User.create(user_params)
+      if @user.save
+        response = { message: 'User created successfully'}
+        render json: response, status: :created
+      else
+        render json: @user.errors, status: :bad
+    end
+  end
 
   # GET /users
   # GET /users.json
@@ -71,6 +86,23 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :phone_number, :password, :password_confirmation)
+      params.permit(
+        :username,
+        :phone_number,
+        :password
+      )
+    end
+
+    def authenticate(login, password)
+      command = AuthenticateUser.call(login, password)
+
+      if command.success?
+        render json: {
+        access_token: command.result,
+        message: 'Login Successful'
+        }
+      else
+        render json: { error: command.errors }, status: :unauthorized
+      end
     end
 end

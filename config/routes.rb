@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
   get 'signup' => 'users#new', as: :signup
-  
+  post 'auth/login', to: 'users#login'
+  post 'auth/register', to: 'users#register'
+
   root to: 'static#home'
 end

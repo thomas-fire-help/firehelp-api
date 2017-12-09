@@ -1,6 +1,6 @@
 class SuppliesNeededsController < ApplicationController
   before_action :set_supplies_needed, only: [:show, :update, :destroy]
-  before_action :api_authentication_check, except: [:index, :show]
+  skip_before_action :authenticate_request, only: %i[index show]
 
   # GET /supplies_neededs
   # GET /supplies_neededs.json
@@ -17,7 +17,7 @@ class SuppliesNeededsController < ApplicationController
   # POST /supplies_neededs.json
   def create
     @supplies_needed = SuppliesNeeded.new(supplies_needed_params)
-    @supplies_needed = current_user
+    @supplies_needed.user = current_user
 
     if @supplies_needed.save
       render :show, status: :created, location: @supplies_needed
@@ -50,6 +50,6 @@ class SuppliesNeededsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supplies_needed_params
-      params.require(:supplies_needed).permit(:organization, :drop_off_location, :phone_number, :drop_off_hours, :email_address, :direct_donations, :items, :special_instructions)
+      params.permit(:organization, :drop_off_location, :phone_number, :drop_off_hours, :email_address, :direct_donations, :items, :special_instructions)
     end
 end
