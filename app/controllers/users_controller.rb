@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authentication_check, except: [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -72,6 +71,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :phone_number, :password, :password_confirmation)
     end
 end

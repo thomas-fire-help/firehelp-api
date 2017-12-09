@@ -16,23 +16,20 @@ gem 'sass-rails'
 gem 'sorcery'
 gem 'turbolinks'
 gem 'uglifier'
-gem 'mailgun-ruby'
 gem 'dotenv-rails'
 
 
 group :development, :test do
-
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'pry'
 end
 
 group :development do
-
+  gem 'annotate'
   gem 'web-console'
   gem 'listen'
-
   gem 'spring'
   gem 'spring-watcher-listen'
 end

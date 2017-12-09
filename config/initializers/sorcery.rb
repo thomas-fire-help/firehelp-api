@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = [:remember_me, :reset_password, :user_activation]
+Rails.application.config.sorcery.submodules = [:remember_me]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -177,7 +177,7 @@ Rails.application.config.sorcery.configure do |config|
     # specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
     #
-    # user.username_attribute_names =
+    user.username_attribute_names = [:phone_number]
 
 
     # change *virtual* password attribute, the one which is used until an encrypted one is generated.
@@ -195,7 +195,7 @@ Rails.application.config.sorcery.configure do |config|
     # change default email attribute.
     # Default: `:email`
     #
-    # user.email_attribute_name =
+    user.email_attribute_name = :phone_number
 
 
     # change default crypted_password attribute.
@@ -282,7 +282,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    user.user_activation_mailer = UserMailer
+    # user.user_activation_mailer = UserMailer
 
 
     # when true sorcery will not automatically
@@ -308,7 +308,7 @@ Rails.application.config.sorcery.configure do |config|
     # do you want to prevent or allow users that did not activate by email to login?
     # Default: `true`
     #
-    user.prevent_non_active_users_to_login = false
+    # user.prevent_non_active_users_to_login = false
 
 
     # -- reset_password --
@@ -333,7 +333,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    user.reset_password_mailer = UserMailer
+    # user.reset_password_mailer = UserMailer
 
 
     # reset password email method on your mailer class.
