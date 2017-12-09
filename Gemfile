@@ -18,6 +18,7 @@ gem 'sorcery'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'webpacker'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
