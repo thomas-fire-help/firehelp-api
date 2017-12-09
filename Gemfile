@@ -16,9 +16,9 @@ gem 'puma'
 gem 'sass-rails'
 gem 'sorcery'
 gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'uglifier'
 gem 'webpacker'
-gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
