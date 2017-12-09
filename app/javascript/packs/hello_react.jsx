@@ -7,6 +7,9 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Route, BrowserRouter } from 'react-router-dom'
 import Home from '../screens/Home'
+import LookingForHelp from '../screens/LookingForHelp'
+import Helping from '../screens/Helping'
+
 import styled from 'styled-components'
 
 const AppContainer = styled.div`
@@ -21,7 +24,9 @@ const AppContainer = styled.div`
 const App = props => (
   <BrowserRouter>
     <AppContainer>
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/looking-for-help" component={LookingForHelp} />
+      <Route exact path="/helping" component={Helping} />
     </AppContainer>
   </BrowserRouter>
 )

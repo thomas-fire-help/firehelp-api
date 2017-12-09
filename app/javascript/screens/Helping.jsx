@@ -43,14 +43,14 @@ const Home = props => (
       </h1>
     </HeaderContainer>
     <NavContainer>
-      <Link to="/looking-for-help">
+      <Link to="/">
         <NavigationCard>
-          I Need Help
+          Water/Food
         </NavigationCard>
       </Link>
-      <Link to="/helping">
+      <Link to="/">
         <NavigationCard>
-          I Want to Help
+          Shelter
         </NavigationCard>
       </Link>
     </NavContainer>
