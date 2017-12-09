@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
   get 'signup' => 'users#new', as: :signup
+
   post 'users/verify' => "phone_numbers#verify"
+  get 'helping', to: 'static#home'
+  get 'looking_for_help', to: 'static#home'
 
   root to: 'static#home'
 end
