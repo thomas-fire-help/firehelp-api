@@ -38,6 +38,22 @@ const Footer = styled.footer`
   text-align: center;
 `
 
+const AuthContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`
+
+const AuthLink = styled(Link)`
+  font-weight: bold;
+  padding: 15px 20px;
+  margin-top: 30px;
+  margin: 30px 15px;
+  color: #000;
+  font-size: 1.1rem;
+  text-decoration: none;
+`
+
 const Home = props => (
   <Container>
     <HeaderContainer>
@@ -56,6 +72,14 @@ const Home = props => (
           I Want to Help
         </NavigationCard>
       </Link>
+      <AuthContainer>
+        <AuthLink to="/login">
+          LOGIN
+        </AuthLink>
+        <AuthLink to="/signup">
+          SIGN UP
+        </AuthLink>
+      </AuthContainer>
     </NavContainer>
 
     <TranslateLink>
