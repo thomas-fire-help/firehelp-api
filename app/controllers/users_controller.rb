@@ -29,15 +29,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save
-        @user.generate_pin
-        @user.send_pin
-
+      if @user.save && @user.generate_pin && @user.send_pin
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def verify_post
-    if @user.verify(params[:pin])
+    if @user.verify(params[:pin].to_i)
       respond_to do |format|
         format.html { redirect_to users_url, notice: 'User was successfully verified.' }
       end

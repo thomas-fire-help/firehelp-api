@@ -16,11 +16,12 @@ class User < ApplicationRecord
 
   def send_pin
     twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-    twilio_client.messages.create(
+    response = twilio_client.messages.create(
       to: phone_number,
       from: ENV['TWILIO_PHONE_NUMBER'],
       body: "[Thomas Fire Help] Your PIN is #{pin}"
     )
+    response.error_code == 0
   end
 
   def verify(entered_pin)
