@@ -13,7 +13,7 @@ const HeaderContainer = styled.div`
   text-transform: uppercase;
 `
 
-const NavContainer = styled.nav`
+const SelectionContainer = styled.nav`
   flex: 4;
 `
 
@@ -23,6 +23,13 @@ const NavigationCard = styled.section`
   border: 1px solid black;
   text-transform: uppercase;
   text-align: center;
+`
+
+const Category = styled(Link)`
+  color: #000;
+  font-size: 20px;
+  padding: 25px 0px;
+  text-decoration: none;
 `
 
 const TranslateLink = styled.aside`
@@ -39,29 +46,30 @@ const Home = props => (
   <Container>
     <HeaderContainer>
       <h1>
-        Thomas Fire Help
+        WHAT KIND OF HELP?
       </h1>
     </HeaderContainer>
-    <NavContainer>
-      <Link to="/">
-        <NavigationCard>
-          Water/Food
-        </NavigationCard>
-      </Link>
-      <Link to="/">
-        <NavigationCard>
-          Shelter
-        </NavigationCard>
-      </Link>
-    </NavContainer>
-
-    <TranslateLink>
-      en Español
-    </TranslateLink>
-
-    <Footer>
-      In event of Emergency, call 911
-    </Footer>
+    <Category to="/">
+      FOOD & WATER
+    </Category>
+    <Category to="/">
+      EMERGENCY SUPPLIES
+    </Category>
+    <Category to="/">
+      CLOTHING
+    </Category>
+    <Category to="/">
+      HOUSING
+    </Category>
+    <Category to="/">
+      PERSONAL CARE ITEMS
+    </Category>
+    <Category to="/">
+      ANIMAL SERVICES
+    </Category>
+    <Category to="/">
+      HEALTH AND WELLNESS
+    </Category>
   </Container>
 )
 
