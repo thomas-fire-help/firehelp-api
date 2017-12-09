@@ -13,10 +13,6 @@ const HeaderContainer = styled.div`
   text-transform: uppercase;
 `
 
-const NavContainer = styled.nav`
-  flex: 4;
-`
-
 const NavigationCard = styled.section`
   margin-top: 20px;
   padding: 35px 15px;
@@ -25,10 +21,11 @@ const NavigationCard = styled.section`
   text-align: center;
 `
 
-const TranslateLink = styled.aside`
-  display: block;
-  text-align: center;
-  padding: 35px 15px;
+const Category = styled(Link)`
+  color: #000;
+  font-size: 20px;
+  padding: 25px 0px;
+  text-decoration: none;
 `
 
 const Footer = styled.footer`
@@ -39,29 +36,30 @@ const Home = props => (
   <Container>
     <HeaderContainer>
       <h1>
-        Thomas Fire Help
+        WHAT KIND OF HELP?
       </h1>
     </HeaderContainer>
-    <NavContainer>
-      <Link to="looking_for_help/food_and_water">
-        <NavigationCard>
-          Water/Food
-        </NavigationCard>
-      </Link>
-      <Link to="/shelter">
-        <NavigationCard>
-          Shelter
-        </NavigationCard>
-      </Link>
-    </NavContainer>
-
-    <TranslateLink>
-      en Español
-    </TranslateLink>
-
-    <Footer>
-      In event of Emergency, call 911
-    </Footer>
+    <Category to="looking_for_help/food_and_water">
+      FOOD & WATER
+    </Category>
+    <Category to="/">
+      EMERGENCY SUPPLIES
+    </Category>
+    <Category to="/">
+      CLOTHING
+    </Category>
+    <Category to="/shelter">
+      HOUSING
+    </Category>
+    <Category to="/">
+      PERSONAL CARE ITEMS
+    </Category>
+    <Category to="/">
+      ANIMAL SERVICES
+    </Category>
+    <Category to="/">
+      HEALTH AND WELLNESS
+    </Category>
   </Container>
 )
 
