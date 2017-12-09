@@ -1,8 +1,0 @@
-<%= render 'shared/notice' %>
-
-<%= form_tag verify_post_user_path(@user) do %>
-  <%= label_tag :PIN %>
-  <%= text_field_tag :pin, params[:pin] %>
-
-  <%= submit_tag "Verify" %>
-<% end %>

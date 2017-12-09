@@ -1,0 +1,39 @@
+# == Schema Information
+#
+# Table name: supplies_neededs
+#
+#  id                   :integer          not null, primary key
+#  organization         :string
+#  drop_off_location    :string
+#  phone_number         :string
+#  drop_off_hours       :string
+#  email_address        :string
+#  direct_donations     :string
+#  items                :string
+#  special_instructions :string
+#  user_id              :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: MyString
+  drop_off_location: MyString
+  phone_number: MyString
+  drop_off_hours: MyString
+  email_address: MyString
+  direct_donations: MyString
+  items: MyString
+  special_instructions: MyString
+
+two:
+  organization: MyString
+  drop_off_location: MyString
+  phone_number: MyString
+  drop_off_hours: MyString
+  email_address: MyString
+  direct_donations: MyString
+  items: MyString
+  special_instructions: MyString
