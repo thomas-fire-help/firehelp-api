@@ -13,3 +13,12 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  webpack:
+    build: .
+    command: bin/webpack-dev-server
+    environment:
+      - RAILS_ENV=development
+    volumes:
+      - .:/thomas-fire-help
+    ports:
+      - "3035:3035"
