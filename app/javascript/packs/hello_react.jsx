@@ -7,12 +7,22 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Route, BrowserRouter } from 'react-router-dom'
 import Home from '../screens/Home'
+import styled from 'styled-components'
+
+const AppContainer = styled.div`
+  width: 100vw;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+`
 
 const App = props => (
   <BrowserRouter>
-    <div>
+    <AppContainer>
       <Route path="/" component={Home} />
-    </div>
+    </AppContainer>
   </BrowserRouter>
 )
 
