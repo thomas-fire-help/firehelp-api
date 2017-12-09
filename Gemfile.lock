@@ -229,6 +229,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier
   web-console
+  webpacker
 
 BUNDLED WITH
    1.16.0
