@@ -26,8 +26,15 @@ const NavigationCard = styled.section`
 const Category = styled(Link)`
   color: #000;
   font-size: 2rem;
-  padding: 25px 0px;
+  padding: 25px 25px;
   text-decoration: none;
+  margin-bottom: 1rem;
+
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23), 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  }
 `
 
 const Footer = styled.footer`
