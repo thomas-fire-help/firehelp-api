@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new', as: :signup
 
   post 'users/verify' => "phone_numbers#verify"
-  get 'looking-for-help', to: 'static#home'
   get 'helping', to: 'static#home'
+  get 'looking_for_help', to: 'static#home'
 
   root to: 'static#home'
 end
