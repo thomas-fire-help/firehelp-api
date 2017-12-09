@@ -5,9 +5,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { Route, BrowserRouter } from 'react-router-dom'
+import Home from '../screens/Home'
 
 const App = props => (
-  <div>App {props.name}!</div>
+  <BrowserRouter>
+    <div>
+      <Route path="/" component={Home} />
+    </div>
+  </BrowserRouter>
 )
 
 App.defaultProps = {
