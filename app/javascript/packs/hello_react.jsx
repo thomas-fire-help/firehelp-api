@@ -18,8 +18,7 @@ import Helping from '../screens/Helping'
 import Housing from '../screens/Housing'
 import HousingForm from '../screens/HousingForm'
 import Login from '../screens/Login'
-import SignUp from '../screens/SignUp';
-import Supplies from '../screens/Supplies'
+import SignUp from '../screens/SignUp'
 
 const store = createStore(s => s, {}, install());
 
