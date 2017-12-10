@@ -1,15 +1,11 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import { Input } from 'antd';
 
 const Housing = ({ data, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
-    <div>
-      <input placeholder="Number of Beds" />
-    </div>
-    <div>
-      <input placeholder="City" />
-    </div>
-
+    <Input placeholder="Number of beds" />
+    <Input placeholder="City" />
     <div>
       <label>Length Available</label>
     </div>
