@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
+import { fetchConfig } from '../utils/fetchConfig'
 
 const Container = styled.div`
   display: flex;
@@ -69,7 +70,7 @@ const LoginButton = styled.button`
   width: 10rem;
   text-transform: uppercase;
   margin-top: 2rem;
-  cursor: pointer;  
+  cursor: pointer;
 `
 
 class Login extends Component {
@@ -83,10 +84,11 @@ class Login extends Component {
 
   handleOnClick = () => {
     const { user: login, password } = this.state;
-    console.log('LOGIN DATA TO POST', login, password);
+
     fetch('auth/login', {
       method: 'post',
-      body: { login, password },
+      body: JSON.stringify({ login, password }),
+      headers: fetchConfig(),
     })
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
+import { fetchConfig } from '../utils/fetchConfig'
 
 const Container = styled.div`
   display: flex;
@@ -72,12 +73,6 @@ const LoginButton = styled.button`
   margin-top: 2rem;
 `
 
-const fetchConfig = () => {
-  return {
-    'X-CSRF-Token': document.querySelector("meta[name='csrf-token']").getAttribute('content'),
-  };
-};
-
 const isValidEmail = (email) => {
   console.log(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))
 }
@@ -94,8 +89,6 @@ class Login extends Component {
 
   handleOnClick = () => {
     const { email: username, phoneNumber: phone_number, password } = this.state;
-    console.log('SIGNUP DATA TO POST', JSON.stringify({ username, phone_number, password }));
-    console.log(fetchConfig());
 
     fetch('auth/register', {
       method: 'post',
