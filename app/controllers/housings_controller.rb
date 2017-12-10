@@ -22,7 +22,7 @@ class HousingsController < ApplicationController
 
     if @housing.save
       tags = (params[:tags] || "").split(', ')
-      @housing.tags = Tag.where(id: tags)
+      @housing.tags = Tag.where(id: tags, category: 'housing')
       if @housing.save
         render :show, status: :created, location: @housing
       else
@@ -36,7 +36,7 @@ class HousingsController < ApplicationController
   # PATCH/PUT /housings/1
   # PATCH/PUT /housings/1.json
   def update
-    @housing.tags = Tag.where(id: (@housing.tags.pluck(:id) +( params[:tags] || [])).uniq)
+    @housing.tags = Tag.where(id: (@housing.tags.pluck(:id) +( params[:tags].split(', ') || [])).uniq, category: 'housing')
     render json: { error: 'Not Authorized' }, status: 401 unless @housing.user == current_user || current_user.moderator?
     if @housing.update(housing_params)
       render :show, status: :ok, location: @housing
