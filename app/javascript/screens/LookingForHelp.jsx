@@ -11,8 +11,8 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
   align-self: flex-start;
   flex: 1;
-  text-transform: uppercase;
   font-size: 2.25rem;
+  padding: 1.25em 0;
 `
 
 const NavigationCard = styled.section`
@@ -60,7 +60,7 @@ const Home = ({ history: { goBack }}) => (
     <Container>
       <HeaderContainer>
         <h1>
-          WHAT KIND OF HELP?
+          What kind of help?
         </h1>
       </HeaderContainer>
       <External

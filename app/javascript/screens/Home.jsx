@@ -12,7 +12,8 @@ const HeaderContainer = styled.div`
   align-self: flex-start;
   flex: 1;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.25rem;
+  padding-bottom: 1em;
 `
 
 const NavContainer = styled.nav`

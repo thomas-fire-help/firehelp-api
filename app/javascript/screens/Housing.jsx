@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Housing = ({ loading, data, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
-    <Spinner loading={loading}>
+    <Spinner loading={true}>
       {data.map(listing => (
         <div>
           <h2>
