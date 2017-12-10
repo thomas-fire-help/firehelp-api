@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import { Container, HeaderContainer } from '../components/atoms'
 import { Input, Radio, Checkbox, Button } from 'antd'
 import styled from 'styled-components'
+import SegmentedController from '../components/SegmentedController'
 const RadioGroup = Radio.Group
 const { TextArea } = Input
 
@@ -28,14 +29,18 @@ const StackInput = ({ required, children, label }) => (
   </div>
 )
 
-const Housing = ({ actions, formData, history: { goBack }}) => (
+const Housing = ({ actions, update, formData, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
     <Container>
       <HeaderContainer>
         Enter Housing Information
       </HeaderContainer>
       <StackInput required label="Housing Type:">
-
+        <SegmentedController
+          value={formData.housingType}
+          onChange={value => update('housingType', value)}
+          options={["Entire Home", "Private Room"]}
+        />
       </StackInput>
 
       <StackInput required label="Beds Available:">
@@ -124,7 +129,7 @@ export default compose(
       }
     },
     {
-      update: (state) => (payload) => ({ [payload.key]: payload.value })
+      update: (state) => (key, value) => Object.assign({}, { formData: { ... state.formData, [key]: value  } })
     }
   ),
   connectModule(housingModule)
