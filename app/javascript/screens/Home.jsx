@@ -12,7 +12,8 @@ const HeaderContainer = styled.div`
   align-self: flex-start;
   flex: 1;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.25rem;
+  padding-bottom: 1em;
 `
 
 const NavContainer = styled.nav`
@@ -73,6 +74,9 @@ const Footer = styled.footer`
 
 const Home = props => (
   <Container>
+    <div>
+      In event of Emergency, call 911
+    </div>
     <HeaderContainer>
       <h1>
         Thomas Fire Help
@@ -105,7 +109,9 @@ const Home = props => (
     </TranslateLink>
 
     <Footer>
-      In event of Emergency, call 911
+      <div>
+        Built with ❤️ for and by Ventura County.
+      </div>
     </Footer>
   </Container>
 )

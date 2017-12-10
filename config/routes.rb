@@ -66,6 +66,8 @@ Rails.application.routes.draw do
 
   get 'helping', to: 'static#home'
   get 'looking_for_help', to: 'static#home'
+  get 'looking_for_help/housing', to: 'static#home'
+  get 'helping/housing', to: 'static#home'
 
   root to: 'static#home'
 end

@@ -11,8 +11,8 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
   align-self: flex-start;
   flex: 1;
-  text-transform: uppercase;
   font-size: 2.25rem;
+  padding: 1.25em 0;
 `
 
 const NavigationCard = styled.section`
@@ -60,7 +60,7 @@ const Home = ({ history: { goBack }}) => (
     <Container>
       <HeaderContainer>
         <h1>
-          WHAT KIND OF HELP?
+          What kind of help?
         </h1>
       </HeaderContainer>
       <External
@@ -75,12 +75,9 @@ const Home = ({ history: { goBack }}) => (
       >
         I want to pick up supplies
       </External>
-      <External
-        href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=1117680778"
-        target="_blank"
-      >
+      <Category to="/looking_for_help/housing">
         I need housing
-      </External>
+      </Category>
       <External
         href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=855993057"
         target="_blank"

@@ -9,6 +9,7 @@ const Header = styled.div`
 `
 
 const Container = styled.section`
+  padding-top: 20px;
   height: 100%;
   width: 100%;
 `
@@ -32,10 +33,10 @@ const RightButton = styled.div`
 const Body = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 0 2rem;
 `
 
-const Layout = ({ onBack, children }) => (
+const Layout = ({ onBack, children, header }) => (
   <Container>
     <Header>
       <LeftButton onClick={onBack}>
@@ -46,9 +47,7 @@ const Layout = ({ onBack, children }) => (
           TFH
         </h2>
       </Title>
-      <RightButton>
-
-      </RightButton>
+      <RightButton></RightButton>
     </Header>
     <Body>
       {children}
