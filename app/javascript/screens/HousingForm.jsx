@@ -1,9 +1,10 @@
 import React from 'react'
 import { connectModule } from 'redux-modules'
+import { compose, withStateHandlers } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
 
-const Housing = ({ data, history: { goBack }}) => (
+const Housing = ({ actions, formData, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
     <div>
       <input placeholder="Number of Beds" />
@@ -41,6 +42,10 @@ const Housing = ({ data, history: { goBack }}) => (
         placeholder="Additional Information"
       />
     </div>
+
+    <button onClick={() => actions.create(formData)}>
+      Submit!
+    </button>
   </Layout>
 )
 
@@ -48,4 +53,18 @@ Housing.defaultProps = {
 
 }
 
-export default connectModule(housingModule)(Housing)
+export default compose(
+  withStateHandlers(
+    {
+      formData: {
+        number_of_beds: '',
+        city: '',
+        additional_information: '',
+      }
+    },
+    {
+      update: (state) => (payload) => ({ [payload.key]: payload.value })
+    }
+  ),
+  connectModule(housingModule)
+)(Housing)
