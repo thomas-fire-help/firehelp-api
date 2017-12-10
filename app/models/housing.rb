@@ -37,5 +37,5 @@ class Housing < ApplicationRecord
   validates :pets_accepted, presence: true
   validates :status, inclusion: { in: %w(available claimed archived) }
 
-  scope :active, -> { where("status IS NOT ?", "archived") }
+  scope :active, -> { where.not(status: "archived") }
 end
