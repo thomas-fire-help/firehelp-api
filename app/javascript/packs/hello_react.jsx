@@ -17,6 +17,9 @@ import LookingForHelp from '../screens/LookingForHelp'
 import Helping from '../screens/Helping'
 import Housing from '../screens/Housing'
 import HousingForm from '../screens/HousingForm'
+import Login from '../screens/Login'
+import SignUp from '../screens/SignUp';
+import Supplies from '../screens/Supplies'
 
 const store = createStore(s => s, {}, install());
 
@@ -38,6 +41,8 @@ const App = props => (
         <Route exact path="/looking_for_help/housing" component={Housing} />
         <Route exact path="/helping" component={Helping} />
         <Route exact path="/helping/housing" component={HousingForm} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/sign_up" component={SignUp} />
       </AppContainer>
     </ModuleProvider>
   </BrowserRouter>

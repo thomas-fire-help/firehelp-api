@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: tag_tagabbles
+# Table name: tag_taggables
 #
 #  id            :integer          not null, primary key
 #  taggable_id   :integer
