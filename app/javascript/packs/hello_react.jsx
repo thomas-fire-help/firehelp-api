@@ -9,6 +9,8 @@ import { Route, BrowserRouter } from 'react-router-dom'
 import Home from '../screens/Home'
 import LookingForHelp from '../screens/LookingForHelp'
 import Helping from '../screens/Helping'
+import Login from '../screens/Login'
+import SignUp from '../screens/SignUp';
 
 import styled from 'styled-components'
 
@@ -28,6 +30,8 @@ const App = props => (
       <Route exact path="/looking_for_help" component={LookingForHelp} />
       <Route exact path="/looking_for_help/food_and_water" component={LookingForHelp} />
       <Route exact path="/helping" component={Helping} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/sign_up" component={SignUp} />
     </AppContainer>
   </BrowserRouter>
 )

@@ -75,23 +75,30 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
-      user: '',
+      username: '',
+      phoneNumber: '',
       password: '',
     }
   }
 
   handleOnClick = () => {
-    const { user: login, password } = this.state;
-    console.log('LOGIN DATA TO POST', login, password);
-    fetch('auth/login', {
+    const { username, phoneNumber: phone_number, password } = this.state;
+    console.log('SIGNUP DATA TO POST', username, phone_number, password);
+    fetch('auth/register', {
       method: 'post',
-      body: { login, password },
+      body: { username, phone_number, password },
     })
   }
 
   handleUsernameInput = (e) => {
     this.setState({
-      user: e.target.value
+      username: e.target.value
+    })
+  }
+
+  handlePhoneNumberInput = (e) => {
+    this.setState({
+      phoneNumber: e.target.value
     })
   }
 
@@ -109,13 +116,18 @@ class Login extends Component {
         <Container>
           <HeaderContainer>
             <h1>
-              Login
+              Sign Up
             </h1>
           </HeaderContainer>
           <AuthInputContainer>
             <AuthInput
               onChange={(e) => {this.handleUsernameInput(e)}}
-              placeholder="Username or Phone #"
+              placeholder="Email address"
+              type="text"
+            />
+            <AuthInput
+              onChange={(e) => {this.handlePhoneNumberInput(e)}}
+              placeholder="Phone number"
               type="text"
             />
             <AuthInput
@@ -124,7 +136,7 @@ class Login extends Component {
               type="password"
             />
             <LoginButton onClick={this.handleOnClick}>
-              Login
+              Sign Up
             </LoginButton>
           </AuthInputContainer>
         </Container>
