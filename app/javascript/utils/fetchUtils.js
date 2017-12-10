@@ -5,3 +5,11 @@ export const fetchConfig = () => {
     'Accept': 'application/json',
   };
 };
+
+export const handleErrors = (response) => {
+  if (response.ok) {
+    response.json()
+  } else {
+    throw response;
+  }
+};

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { fetchConfig } from '../utils/fetchConfig'
+import { fetchConfig } from '../utils/fetchUtils'
 
 const Container = styled.div`
   display: flex;
