@@ -1,4 +1,6 @@
 import React from 'react'
+import { connectModule } from 'redux-modules'
+import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
 
 const Housing = ({ data, history: { goBack }}) => (
@@ -46,4 +48,4 @@ Housing.defaultProps = {
 
 }
 
-export default Housing
+export default connectModule(housingModule)(Housing)
