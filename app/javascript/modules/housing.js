@@ -29,7 +29,8 @@ const housingModule = createModule ({
       }),
     ],
     createSuccess: {
-      reducer: (state, { payload }) => state,
+      reducer: (state, { payload }) =>
+        Object.assign({}, state, { data: state.data.concat(payload) }),
     },
     createError: s => s,
     list: (state, { payload }) => [
