@@ -1,10 +1,15 @@
 import { createModule } from 'redux-modules';
 import { loop, Cmd } from 'redux-loop';
 
-const endpoint = '/housing'
+const endpoint = '/housings'
 
-const createHouse = params =>
+const create = params =>
   fetch(endpoint, { method: 'POST', body: JSON.stringify(params) })
+    .then(res => res.json())
+
+const list = params =>
+  fetch(endpoint).then(res => res.json())
+
 
 const housingModule = createModule ({
   name: 'housing',
@@ -17,7 +22,7 @@ const housingModule = createModule ({
     init: state => state,
     create: (state, { payload }) => [
       Object.assign({}, state, { loading: true }),
-      Cmd.run(createHouse, {
+      Cmd.run(create, {
         successActionCreator: housingModule.createSuccess,
         failActionCreator: housingModule.createError,
         args: [payload]
@@ -29,7 +34,7 @@ const housingModule = createModule ({
     createError: s => s,
     list: (state, { payload }) => [
       Object.assign({}, state, { loading: true }),
-      Cmd.run(listHouse, {
+      Cmd.run(list, {
         successActionCreator: housingModule.listSuccess,
         failActionCreator: housingModule.listError,
         args: [payload]
@@ -37,7 +42,7 @@ const housingModule = createModule ({
     ],
     listSuccess: {
       reducer: (state, { payload }) =>
-        Object.assign({}, state, { loading: true }),
+        Object.assign({}, state, { loading: false, data: payload }),
     },
     listError: s => s,
   },

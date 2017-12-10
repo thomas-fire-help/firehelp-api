@@ -1,4 +1,7 @@
 import React from 'react'
+import { connectModule } from 'redux-modules'
+import { compose, lifecycle } from 'recompose'
+import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
 
 const Housing = ({ data, history: { goBack }}) => (
@@ -25,4 +28,11 @@ Housing.defaultProps = {
   ]
 }
 
-export default Housing
+export default compose(
+  connectModule(housingModule),
+  lifecycle({
+    componentWillMount() {
+      this.props.actions.list()
+    }
+  }),
+)(Housing)
