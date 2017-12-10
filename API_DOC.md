@@ -67,3 +67,5 @@ param :tags           String,  desc: "Comma separated string of Tag IDs"
 ```
 api :DELETE, '/housings/:id'
 ```
+
+## Create
