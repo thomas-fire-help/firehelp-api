@@ -13,8 +13,8 @@ class CreateHousings < ActiveRecord::Migration[5.1]
       t.string :email_address
       t.text :notes
       t.integer :user_id
-      t.string :status
-      t.boolean :verified
+      t.string :status, default: "available"
+      t.boolean :verified, default: false
 
       t.timestamps
     end
