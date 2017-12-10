@@ -37,6 +37,20 @@ const Category = styled(Link)`
   }
 `
 
+const External = styled.a`
+  color: #000;
+  font-size: 2rem;
+  padding: 25px 25px;
+  text-decoration: none;
+  margin-bottom: 1rem;
+
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23), 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  }
+`
+
 const Footer = styled.footer`
   text-align: center;
 `
@@ -49,27 +63,30 @@ const Home = ({ history: { goBack }}) => (
           WHAT KIND OF HELP?
         </h1>
       </HeaderContainer>
-      <Category to="looking_for_help/food_and_water">
-        FOOD & WATER
-      </Category>
-      <Category to="/">
-        EMERGENCY SUPPLIES
-      </Category>
-      <Category to="/">
-        CLOTHING
-      </Category>
-      <Category to="/shelter">
-        HOUSING
-      </Category>
-      <Category to="/">
-        PERSONAL CARE ITEMS
-      </Category>
-      <Category to="/">
-        ANIMAL SERVICES
-      </Category>
-      <Category to="/">
-        HEALTH AND WELLNESS
-      </Category>
+      <External
+        href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=765665098"
+        target="_blank"
+      >
+        I need food or water
+      </External>
+      <External
+        href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=427392080"
+        target="_blank"
+      >
+        I want to pick up supplies
+      </External>
+      <External
+        href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=1117680778"
+        target="_blank"
+      >
+        I need housing
+      </External>
+      <External
+        href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=855993057"
+        target="_blank"
+      >
+        I need help with my animals
+      </External>
     </Container>
   </Layout>
 )

@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209043913) do
+ActiveRecord::Schema.define(version: 20171210045116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "housings", force: :cascade do |t|
+    t.string "city"
+    t.integer "beds"
+    t.string "length_of_stay"
+    t.boolean "child_friendly"
+    t.text "kid_notes"
+    t.boolean "pets_accepted"
+    t.text "pet_notes"
+    t.string "contact_name"
+    t.string "phone_number"
+    t.string "email_address"
+    t.text "notes"
+    t.integer "user_id"
+    t.string "status", default: "available"
+    t.boolean "verified", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "supplies_neededs", force: :cascade do |t|
     t.string "organization"
@@ -29,6 +48,20 @@ ActiveRecord::Schema.define(version: 20171209043913) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tag_taggables", force: :cascade do |t|
+    t.integer "taggable_id"
+    t.string "taggable_type"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,7 +73,7 @@ ActiveRecord::Schema.define(version: 20171209043913) do
     t.string "phone_number"
     t.string "username"
     t.boolean "verified", default: false
-    t.string "role"
+    t.string "role", default: "user"
     t.integer "pin"
     t.string "password_digest"
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"

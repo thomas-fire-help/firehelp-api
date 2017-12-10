@@ -25,4 +25,6 @@ class SuppliesNeeded < ApplicationRecord
   validates :drop_off_hours, presence: true
   validates :items, presence: true
   validates :direct_donations, presence: true
+
+  has_many :tags, as: :taggable
 end

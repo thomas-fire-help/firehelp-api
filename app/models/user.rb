@@ -3,8 +3,6 @@
 # Table name: users
 #
 #  id                              :integer          not null, primary key
-#  crypted_password                :string
-#  salt                            :string
 #  created_at                      :datetime         not null
 #  updated_at                      :datetime         not null
 #  remember_me_token               :string
@@ -15,8 +13,9 @@
 #  phone_number                    :string
 #  username                        :string
 #  verified                        :boolean          default(FALSE)
-#  role                            :string
+#  role                            :string           default("user")
 #  pin                             :integer
+#  password_digest                 :string
 #
 
 class User < ApplicationRecord
@@ -27,6 +26,8 @@ class User < ApplicationRecord
 
   validates :phone_number, uniqueness: true, presence: true, format: { with: /\d{10}/, message: "bad format" }
   validates :username, uniqueness: true, presence: true, format: { with: /[a-zA-Z]+/, message: "must be alphanumeric" }
+
+  validates :role, inclusion: { in: %w(user admin moderator) }
 
   has_many :supplies_neededs
 
@@ -47,5 +48,13 @@ class User < ApplicationRecord
 
   def verify(entered_pin)
     update(verified: true) if self.pin == entered_pin
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def moderator?
+    role == "moderator" || admin?
   end
 end
