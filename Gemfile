@@ -8,14 +8,18 @@ end
 
 gem 'rails', '~> 5.1.4'
 
+gem 'bcrypt'
 gem 'coffee-rails'
 gem 'dotenv-rails'
 gem 'jbuilder'
+gem 'jwt'
 gem 'pg'
 gem 'puma'
+gem 'rack-cors', :require => 'rack/cors'
 gem 'sass-rails'
-gem 'sorcery'
+gem 'simple_command'
 gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'uglifier'
 gem 'webpacker'
 

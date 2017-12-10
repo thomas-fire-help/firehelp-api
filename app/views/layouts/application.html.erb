@@ -11,12 +11,6 @@
   </head>
 
   <body>
-    <% if current_user %>
-        <%= link_to 'Logout', :logout, method: :post %>
-      <% else %>
-        <%= link_to 'Login', :login %>
-        <%= link_to 'Sign Up', :signup %>
-      <% end %>
     <%= yield %>
   </body>
 </html>

@@ -9,6 +9,7 @@ import { Route, BrowserRouter } from 'react-router-dom'
 import Home from '../screens/Home'
 import LookingForHelp from '../screens/LookingForHelp'
 import Helping from '../screens/Helping'
+import Supplies from '../screens/Supplies'
 
 import styled from 'styled-components'
 
@@ -26,7 +27,7 @@ const App = props => (
     <AppContainer>
       <Route exact path="/" component={Home} />
       <Route exact path="/looking_for_help" component={LookingForHelp} />
-      <Route exact path="/looking_for_help/food_and_water" component={LookingForHelp} />
+      <Route exact path="/looking_for_help/:tag" component={Supplies} />
       <Route exact path="/helping" component={Helping} />
     </AppContainer>
   </BrowserRouter>
