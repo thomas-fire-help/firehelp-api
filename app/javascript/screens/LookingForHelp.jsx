@@ -75,12 +75,9 @@ const Home = ({ history: { goBack }}) => (
       >
         I want to pick up supplies
       </External>
-      <External
-        href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=1117680778"
-        target="_blank"
-      >
+      <Category to="/looking_for_help/housing">
         I need housing
-      </External>
+      </Category>
       <External
         href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=855993057"
         target="_blank"
