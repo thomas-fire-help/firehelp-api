@@ -6,7 +6,7 @@ class HousingsController < ApplicationController
   # GET /housings
   # GET /housings.json
   def index
-    @housings = Housing.active
+    @housings = Housing.active.page((params[:page] || 0)).per((params[:per_page] || Settings.default.per_page))
   end
 
   # GET /housings/1

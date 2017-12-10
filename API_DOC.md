@@ -4,18 +4,24 @@
 * [Authentication](#authentication)
   * [Login](#login)
   * [Register](#register)
-* [Tag](#tag)
+* [User](#user)
   * [Index](#index-1)
   * [Show](#show-1)
-  * [Create](#create-1)
   * [Update](#update-1)
   * [Destroy](#destroy-1)
-* [Housing](#housing)
+* [Tag](#tag)
   * [Index](#index-2)
   * [Show](#show-2)
-  * [Create](#create-2)
   * [Update](#update-2)
   * [Destroy](#destroy-2)
+  * [Resend Verification](#resend-verification)
+  * [Verify](#verify)
+* [Housing](#housing)
+  * [Index](#index-3)
+  * [Show](#show-3)
+  * [Create](#create-3)
+  * [Update](#update-3)
+  * [Destroy](#destroy-3)
 
 # Authentication
 ## Login
@@ -32,10 +38,44 @@ param :phone_number, String, desc: 'Phone Number', required: true
 param :password,     String, desc: "Password",     required: true
 ```
 
+# User
+## Index
+```
+api :GET, '/users', desc: "Requires admin"
+param :page     Integer, desc: "What page to get"
+param :per_page Integer, default: 25 desc: "How many results per page"
+```
+## Show
+```
+api :GET, '/users/:id', desc: "Requires admin"
+```
+## Update
+```
+api :PATCH/PUT, '/users/:id'
+param :username,     String, desc: 'Username',     required: true
+param :phone_number, String, desc: 'Phone Number', required: true
+param :password,     String, desc: "Password",     required: true
+```
+## Destroy
+```
+api :DELETE, '/users/:id', desc: "Requires admin"
+```
+## Resend Verification
+```
+api :POST, '/users/:id/resend_verification', desc: 'Resend text message verification for a user'
+```
+## Verify
+```
+api :POST, '/users/:id/verify', desc: "Verify a user's phone number via pin"
+param :pin Integer, desc: "4 digit pin for user's phone verification", required: true
+```
+
 # Tag
 ## Index
 ```
 api :GET, '/tags'
+param :page     Integer, desc: "What page to get"
+param :per_page Integer, default: 25 desc: "How many results per page"
 ```
 ## Show
 ```
@@ -62,6 +102,8 @@ api :DELETE, '/tags/:id'
 ## Index
 ```
 api :GET, '/housings'
+param :page     Integer, desc: "What page to get"
+param :per_page Integer, default: 25 desc: "How many results per page"
 ```
 ## Show
 ```
