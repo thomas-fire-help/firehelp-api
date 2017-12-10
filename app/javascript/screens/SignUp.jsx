@@ -71,28 +71,41 @@ const LoginButton = styled.button`
   margin-top: 2rem;
 `
 
+const fetchConfig = () => {
+  return {
+    'X-CSRF-Token': document.querySelector("meta[name='csrf-token']").getAttribute('content'),
+  };
+};
+
+const isValidEmail = (email) => {
+  console.log(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))
+}
+
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      email: '',
       phoneNumber: '',
       password: '',
     }
   }
 
   handleOnClick = () => {
-    const { username, phoneNumber: phone_number, password } = this.state;
+    const { email: username, phoneNumber: phone_number, password } = this.state;
     console.log('SIGNUP DATA TO POST', username, phone_number, password);
+    console.log(fetchConfig());
+
     fetch('auth/register', {
       method: 'post',
       body: { username, phone_number, password },
+      headers: fetchConfig(),
     })
   }
 
-  handleUsernameInput = (e) => {
+  handleEmailInput = (e) => {
     this.setState({
-      username: e.target.value
+      email: e.target.value
     })
   }
 
@@ -121,7 +134,7 @@ class Login extends Component {
           </HeaderContainer>
           <AuthInputContainer>
             <AuthInput
-              onChange={(e) => {this.handleUsernameInput(e)}}
+              onChange={(e) => {this.handleEmailInput(e)}}
               placeholder="Email address"
               type="text"
             />
