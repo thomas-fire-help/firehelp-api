@@ -1,0 +1,47 @@
+# == Schema Information
+#
+# Table name: animals
+#
+#  id                     :integer          not null, primary key
+#  type_of_animal         :string
+#  help_offered           :text
+#  city                   :string
+#  organization           :string
+#  contact_name           :string
+#  phone_number           :string
+#  email_address          :string
+#  additional_information :string
+#  user_id                :integer
+#  status                 :string           default("available")
+#  verified               :boolean          default(FALSE)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_of_animal: MyString
+  help_offered: MyText
+  city: MyString
+  organization: MyString
+  contact_name: MyString
+  phone_number: MyString
+  email_address: MyString
+  additional_information: MyString
+  user_id: 1
+  status: MyString
+  verified: false
+
+two:
+  type_of_animal: MyString
+  help_offered: MyText
+  city: MyString
+  organization: MyString
+  contact_name: MyString
+  phone_number: MyString
+  email_address: MyString
+  additional_information: MyString
+  user_id: 1
+  status: MyString
+  verified: false

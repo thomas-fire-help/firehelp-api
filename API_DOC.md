@@ -156,3 +156,52 @@ params :verified      Boolean, default: false, desc: 'Whether the posting is ver
 ```
 api :DELETE, '/housings/:id'
 ```
+
+# Animal
+## Index
+```
+api :GET, '/animals'
+param :page     Integer, desc: "What page to get"
+param :per_page Integer, default: 25 desc: "How many results per page"
+```
+## Show
+```
+api :GET, '/animals/:id'
+```
+## Create
+```
+api :POST, '/animals'
+param :type_of_animal         String,  required: true
+param :help_offered           Text, required: true
+param :city                   Text
+param :organization           String
+param :contact_name           String,  required: true
+param :phone_number           String,  required: true
+param :email_address          String,  required: true
+param :additional_information Text
+param :tags                   String,  desc: "Comma separated string of Tag IDs"
+param :user_id                Integer, desc: "DO NOT CHANGE, which user the housing post belongs to"
+param :status                 String,  options: ['available', 'claimed', 'archived'], default: 'available', desc: 'Shouldn't be changed via create, only via update. Status of the posting'
+params :verified              Boolean, default: false, desc: 'Shouldn't be changed via create, only via update. Whether the posting is verified or not'
+```
+## Update
+`required` will only be enforced if it does not previously exist
+```
+api :PATCH/PUT, '/animals/:id'
+param :type_of_animal         String,  required: true
+param :help_offered           Text, required: true
+param :city                   Text
+param :organization           String
+param :contact_name           String,  required: true
+param :phone_number           String,  required: true
+param :email_address          String,  required: true
+param :additional_information Text
+param :tags                   String,  desc: "Comma separated string of Tag IDs"
+param :user_id                Integer, desc: "DO NOT CHANGE, which user the housing post belongs to"
+param :status                 String,  options: ['available', 'claimed', 'archived'], default: 'available', desc: 'Status of the posting'
+params :verified              Boolean, default: false, desc: 'Whether the posting is verified or not'
+```
+## Destroy
+```
+api :DELETE, '/animals/:id'
+```

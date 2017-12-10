@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210064555) do
+ActiveRecord::Schema.define(version: 20171210182136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "animals", force: :cascade do |t|
+    t.string "type_of_animal"
+    t.text "help_offered"
+    t.string "city"
+    t.string "organization"
+    t.string "contact_name"
+    t.string "phone_number"
+    t.string "email_address"
+    t.string "additional_information"
+    t.integer "user_id"
+    t.string "status", default: "available"
+    t.boolean "verified", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "housings", force: :cascade do |t|
     t.string "city"
@@ -79,6 +95,24 @@ ActiveRecord::Schema.define(version: 20171210064555) do
     t.string "password_digest"
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.text "skills"
+    t.integer "number_of_volunteers"
+    t.text "volunteers_notes"
+    t.string "organization"
+    t.string "address"
+    t.string "coordinates"
+    t.string "contact_name"
+    t.string "phone_number"
+    t.string "email_address"
+    t.string "additional_information"
+    t.integer "user_id"
+    t.string "status", default: "available"
+    t.boolean "verified", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

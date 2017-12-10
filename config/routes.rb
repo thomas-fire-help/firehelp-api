@@ -51,6 +51,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :animals
   resources :housings
   resources :tags
   resources :supplies_neededs
