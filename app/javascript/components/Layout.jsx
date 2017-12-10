@@ -35,7 +35,7 @@ const Body = styled.div`
   padding: 2rem;
 `
 
-const Layout = ({ onBack, children }) => (
+const Layout = ({ onBack, children, header }) => (
   <Container>
     <Header>
       <LeftButton onClick={onBack}>
@@ -46,9 +46,7 @@ const Layout = ({ onBack, children }) => (
           TFH
         </h2>
       </Title>
-      <RightButton>
-
-      </RightButton>
+      <RightButton></RightButton>
     </Header>
     <Body>
       {children}
