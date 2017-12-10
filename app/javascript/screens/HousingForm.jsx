@@ -1,11 +1,14 @@
 import React from 'react'
+import { connectModule } from 'redux-modules'
+import { compose, withStateHandlers } from 'recompose'
+import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
 import { Input, Radio, Checkbox} from 'antd';
 
 const RadioGroup = Radio.Group;
 const { TextArea } = Input;
 
-const Housing = ({ data, history: { goBack }}) => (
+const Housing = ({ actions, formData, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
     <Input placeholder="Number of beds" />
     <Input placeholder="City" />
@@ -63,6 +66,10 @@ const Housing = ({ data, history: { goBack }}) => (
     <div>
       <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
     </div>
+
+    <button onClick={() => actions.create(formData)}>
+      Submit!
+    </button>
   </Layout>
 )
 
@@ -70,4 +77,18 @@ Housing.defaultProps = {
 
 }
 
-export default Housing
+export default compose(
+  withStateHandlers(
+    {
+      formData: {
+        number_of_beds: '',
+        city: '',
+        additional_information: '',
+      }
+    },
+    {
+      update: (state) => (payload) => ({ [payload.key]: payload.value })
+    }
+  ),
+  connectModule(housingModule)
+)(Housing)

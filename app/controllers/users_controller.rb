@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       response = { message: 'User created successfully'}
       render json: response, status: :created
     else
-      render json: @user.errors, status: :bad
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 

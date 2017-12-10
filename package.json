@@ -11,6 +11,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-loop": "^4.2.4",
     "redux-modules": "^1.1.0",
