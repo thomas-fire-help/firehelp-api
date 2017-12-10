@@ -2,6 +2,7 @@
   "name": "thomas-fire-help",
   "private": true,
   "dependencies": {
+    "@procore/core-react": "3.0.2-0-alpha.2b0b8da0",
     "@rails/webpacker": "^3.0.2",
     "antd": "^3.0.0",
     "babel-preset-react": "^6.24.1",

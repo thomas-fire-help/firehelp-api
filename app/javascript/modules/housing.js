@@ -1,5 +1,5 @@
 import { createModule } from 'redux-modules';
-import { loop, Cmd } from 'redux-loop';
+import { loop, Cmd, liftState } from 'redux-loop';
 
 const endpoint = '/housings'
 
@@ -17,6 +17,7 @@ const housingModule = createModule ({
     data: [],
     loading: false,
   },
+  composes: [liftState],
   selector: s => s.housing,
   transformations: {
     init: state => state,
@@ -30,20 +31,20 @@ const housingModule = createModule ({
     ],
     createSuccess: {
       reducer: (state, { payload }) =>
-        Object.assign({}, state, { data: state.data.concat(payload) }),
+        Object.assign({}, state, { data: state.data.concat(payload), loading: false }),
     },
     createError: s => s,
     list: (state, { payload }) => [
       Object.assign({}, state, { loading: true }),
       Cmd.run(list, {
-        successActionCreator: housingModule.listSuccess,
-        failActionCreator: housingModule.listError,
+        successActionCreator: housingModule.actions.listSuccess,
+        failActionCreator: housingModule.actions.listError,
         args: [payload]
       }),
     ],
     listSuccess: {
       reducer: (state, { payload }) =>
-        Object.assign({}, state, { loading: false, data: payload }),
+        Object.assign({}, state, { loading: false, data: payload })
     },
     listError: s => s,
   },
