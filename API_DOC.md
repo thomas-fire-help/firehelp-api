@@ -51,6 +51,7 @@ param :per_page Integer, default: 25 desc: "How many results per page"
 api :GET, '/users/:id', desc: "Requires admin"
 ```
 ## Update
+`required` will only be enforced if it does not previously exist
 ```
 api :PATCH/PUT, '/users/:id'
 param :username,     String, desc: 'Username',     required: true
@@ -90,6 +91,7 @@ param :name     String,  required: true
 param :category String, options: ['housing'], required: true
 ```
 ## Update
+`required` will only be enforced if it does not previously exist
 ```
 api :PATCH/PUT, '/tags/:id', desc: "Requires admin"
 param :name     String,  required: true
@@ -126,8 +128,12 @@ param :phone_number   String,  required: true
 param :email_address  String,  required: true
 param :notes          Text
 param :tags           String,  desc: "Comma separated string of Tag IDs"
+param :user_id        Integer, desc: "DO NOT CHANGE, which user the housing post belongs to"
+param :status         String,  options: ['available', 'claimed', 'archived'], default: 'available', desc: 'Shouldn't be changed via create, only via update. Status of the posting'
+params :verified      Boolean, default: false, desc: 'Shouldn't be changed via create, only via update. Whether the posting is verified or not'
 ```
 ## Update
+`required` will only be enforced if it does not previously exist
 ```
 api :PATCH/PUT, '/housings/:id'
 param :city           String,  required: true
@@ -142,6 +148,9 @@ param :phone_number   String,  required: true
 param :email_address  String,  required: true
 param :notes          Text
 param :tags           String,  desc: "Comma separated string of Tag IDs"
+param :user_id        Integer, desc: "DO NOT CHANGE, which user the housing post belongs to"
+param :status         String,  options: ['available', 'claimed', 'archived'], default: 'available', desc: 'Status of the posting'
+params :verified      Boolean, default: false, desc: 'Whether the posting is verified or not'
 ```
 ## Destroy
 ```
