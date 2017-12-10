@@ -12,6 +12,7 @@
 * [Tag](#tag)
   * [Index](#index-2)
   * [Show](#show-2)
+  * [Create](#create-2)
   * [Update](#update-2)
   * [Destroy](#destroy-2)
   * [Resend Verification](#resend-verification)
