@@ -64,10 +64,13 @@ Rails.application.routes.draw do
   post 'auth/login', to: 'users#login'
   post 'auth/register', to: 'users#register'
 
+  # We'll fix these later
   get 'helping', to: 'static#home'
   get 'looking_for_help', to: 'static#home'
   get 'looking_for_help/housing', to: 'static#home'
   get 'helping/housing', to: 'static#home'
+  get 'login', to: 'static#home'
+  get 'sign_up', to: 'static#home'
 
   root to: 'static#home'
 end
