@@ -24,9 +24,7 @@
 class Housing < ApplicationRecord
   belongs_to :user
   has_many :tag_taggables, as: :taggable
-  accepts_nested_attributes_for :tag_taggables
   has_many :tags, :through => :tag_taggables
-  accepts_nested_attributes_for :tags
 
   validates :email_address, presence: true
   validates :city, presence: true
