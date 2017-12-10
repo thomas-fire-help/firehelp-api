@@ -5,17 +5,17 @@
   * [Login](#login)
   * [Register](#register)
 * [Tag](#tag)
-  * [Index](#index)
-  * [Show](#show)
-  * [Create](#create)
-  * [Update](#update)
-  * [Destroy](#destroy)
-* [Housing](#housing)
   * [Index](#index-1)
   * [Show](#show-1)
   * [Create](#create-1)
   * [Update](#update-1)
   * [Destroy](#destroy-1)
+* [Housing](#housing)
+  * [Index](#index-2)
+  * [Show](#show-2)
+  * [Create](#create-2)
+  * [Update](#update-2)
+  * [Destroy](#destroy-2)
 
 # Authentication
 ## Login
