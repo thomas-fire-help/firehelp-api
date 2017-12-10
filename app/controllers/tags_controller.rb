@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :update, :destroy]
-  before_action :require_admin
+  before_action :require_moderator, except: [:index]
 
   # GET /tags
   # GET /tags.json
@@ -28,6 +28,7 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
+
     if @tag.update(tag_params)
       render :show, status: :ok, location: @tag
     else
@@ -49,6 +50,6 @@ class TagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
-      params.require(:tag).permit(:name, :taggable_id, :taggable_type)
+      params.permit(:name, :taggable_id, :taggable_type)
     end
 end

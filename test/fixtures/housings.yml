@@ -1,0 +1,56 @@
+# == Schema Information
+#
+# Table name: housings
+#
+#  id             :integer          not null, primary key
+#  city           :string
+#  beds           :integer
+#  length_of_stay :string
+#  child_friendly :boolean
+#  kid_notes      :text
+#  pets_accepted  :boolean
+#  pet_notes      :text
+#  contact_name   :string
+#  phone_number   :string
+#  email_address  :string
+#  notes          :text
+#  user_id        :integer
+#  status         :string           default("available")
+#  verified       :boolean          default(FALSE)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: MyString
+  beds: 1
+  length_of_stay: MyString
+  child_friendly: false
+  kid_notes: MyText
+  pets_accepted: false
+  pet_notes: MyText
+  contact_name: MyString
+  phone_number: MyString
+  email_address: MyString
+  notes: MyText
+  user_id: 1
+  status: MyString
+  verified: false
+
+two:
+  city: MyString
+  beds: 1
+  length_of_stay: MyString
+  child_friendly: false
+  kid_notes: MyText
+  pets_accepted: false
+  pet_notes: MyText
+  contact_name: MyString
+  phone_number: MyString
+  email_address: MyString
+  notes: MyText
+  user_id: 1
+  status: MyString
+  verified: false
