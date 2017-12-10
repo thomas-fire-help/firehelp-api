@@ -28,6 +28,8 @@ class User < ApplicationRecord
   validates :phone_number, uniqueness: true, presence: true, format: { with: /\d{10}/, message: "bad format" }
   validates :username, uniqueness: true, presence: true, format: { with: /[a-zA-Z]+/, message: "must be alphanumeric" }
 
+  validates :role, inclusion: { in: %w(user admin moderator) }
+
   has_many :supplies_neededs
 
   def generate_pin
@@ -47,5 +49,13 @@ class User < ApplicationRecord
 
   def verify(entered_pin)
     update(verified: true) if self.pin == entered_pin
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def moderator?
+    role == "moderator"
   end
 end
