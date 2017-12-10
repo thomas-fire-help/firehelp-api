@@ -60,7 +60,7 @@ const AuthInput = styled.input`
   }
 `
 
-const LoginButton = styled.button`
+const SignUpButton = styled.button`
   align-self: flex-end;
   background: none;
   border: 1px solid #000;
@@ -77,7 +77,7 @@ const isValidEmail = (email) => {
   console.log(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))
 }
 
-class Login extends Component {
+class SignUp extends Component {
   constructor() {
     super()
     this.state = {
@@ -142,9 +142,9 @@ class Login extends Component {
               placeholder="Password"
               type="password"
             />
-            <LoginButton onClick={this.handleOnClick}>
+            <SignUpButton onClick={this.handleOnClick}>
               Sign Up
-            </LoginButton>
+            </SignUpButton>
           </AuthInputContainer>
         </Container>
       </Layout>
@@ -152,4 +152,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default SignUp;
