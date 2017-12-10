@@ -3,15 +3,54 @@ import { connectModule } from 'redux-modules'
 import { compose, withStateHandlers } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
-import { Input, Radio, Checkbox} from 'antd';
+import { Input, InputNumber, Radio, Checkbox, Cascader} from 'antd';
+import styled from 'styled-components'
 
 const RadioGroup = Radio.Group;
 const { TextArea } = Input;
 
+const PageHeading = styled.div`
+background-color: #f7f7f7;
+text-align: center;
+padding: 1rem;
+`
+
+const NotesAboutKids = styled.div`
+background-color: seagreen;
+`
+
+const durationOptions = [{
+  value: 'shortTerm',
+  label: 'Short Term - less than a week'
+}, {
+  value: 'longTerm',
+  label: 'Long Term - more than a week'
+}, {
+  value: 'permanent',
+  label: 'Permanent - available for rent'
+}];
+
+function onChangeDuration(value) {
+  console.log(value);
+}
+
 const Housing = ({ actions, formData, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
-    <Input placeholder="Number of beds" />
-    <Input placeholder="City" />
+    <PageHeading>
+      I Have Housing To Offer
+    </PageHeading>
+    <div>
+      Beds Available:
+      <InputNumber min={1} max={40} />
+    </div>
+    <div>
+      City:
+      <Input placeholder="City" />
+    </div>
+    <div>
+      Neighborhood:
+      <Input placeholder="Neighborhood" />
+    </div>
     <div>
       <label>Length Available</label>  
       <RadioGroup>
@@ -19,6 +58,10 @@ const Housing = ({ actions, formData, history: { goBack }}) => (
         <Radio value={2}>Long-Term: one month to one week </Radio>
         <Radio value={3}>Permanent: available for rent or lease</Radio>
       </RadioGroup>
+    </div>
+    <div>
+      <label>Length Available</label>  
+      <Cascader options = {durationOptions} onChange = {onChangeDuration} placeholder="Select" />
     </div>
 
     <div>
@@ -28,7 +71,9 @@ const Housing = ({ actions, formData, history: { goBack }}) => (
     </div>
 
     <div>
-      <TextArea placeholder="Notes About Kids" autosize={{ minRows: 2 }} />
+      <NotesAboutKids>
+        <TextArea placeholder="Notes About Kids" autosize={{ minRows: 2 }} />
+      </NotesAboutKids>
     </div>
 
     <div>
@@ -64,6 +109,7 @@ const Housing = ({ actions, formData, history: { goBack }}) => (
     </div>
 
     <div>
+      Additional Information
       <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
     </div>
 
