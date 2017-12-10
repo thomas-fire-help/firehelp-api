@@ -3,8 +3,6 @@
 # Table name: users
 #
 #  id                              :integer          not null, primary key
-#  crypted_password                :string
-#  salt                            :string
 #  created_at                      :datetime         not null
 #  updated_at                      :datetime         not null
 #  remember_me_token               :string
@@ -15,8 +13,9 @@
 #  phone_number                    :string
 #  username                        :string
 #  verified                        :boolean          default(FALSE)
-#  role                            :string
+#  role                            :string           default("user")
 #  pin                             :integer
+#  password_digest                 :string
 #
 
 class User < ApplicationRecord
@@ -56,6 +55,6 @@ class User < ApplicationRecord
   end
 
   def moderator?
-    role == "moderator"
+    role == "moderator" || admin?
   end
 end
