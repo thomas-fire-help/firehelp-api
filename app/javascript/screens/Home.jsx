@@ -42,14 +42,32 @@ const NavigationCard = styled.section`
   }
 `
 
+const AuthContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const AuthLink = styled(Link)`
+  color: #000;
+  font-size: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  padding: 20px;
+  margin: 4.5rem 4.5rem;
+`
 
 const TranslateLink = styled.aside`
   display: block;
+  font-size: 2rem;
   text-align: center;
   padding: 35px 15px;
 `
 
 const Footer = styled.footer`
+  font-size: 2rem;
   text-align: center;
 `
 
@@ -60,6 +78,7 @@ const Home = props => (
         Thomas Fire Help
       </h1>
     </HeaderContainer>
+
     <NavContainer>
       <StyledLink to="/looking_for_help">
         <NavigationCard>
@@ -71,6 +90,14 @@ const Home = props => (
           I Want to Help
         </NavigationCard>
       </StyledLink>
+      <AuthContainer>
+        <AuthLink to="login">
+          Login
+        </AuthLink>
+        <AuthLink to="sign_up">
+          Sign Up
+        </AuthLink>
+      </AuthContainer>
     </NavContainer>
 
     <TranslateLink>

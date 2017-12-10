@@ -60,41 +60,52 @@ const AuthInput = styled.input`
   }
 `
 
-const LoginButton = styled.button`
+const SignUpButton = styled.button`
   align-self: flex-end;
   background: none;
   border: 1px solid #000;
   border-radius: 3px;
+  cursor: pointer;
   font-size: 1.25rem;
   height: 2.5rem;
   width: 10rem;
   text-transform: uppercase;
   margin-top: 2rem;
-  cursor: pointer;
 `
 
-class Login extends Component {
+const isValidEmail = (email) => {
+  console.log(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))
+}
+
+class SignUp extends Component {
   constructor() {
     super()
     this.state = {
-      user: '',
+      email: '',
+      phoneNumber: '',
       password: '',
     }
   }
 
   handleOnClick = () => {
-    const { user: login, password } = this.state;
+    const { email: username, phoneNumber: phone_number, password } = this.state;
 
-    fetch('auth/login', {
+    fetch('auth/register', {
       method: 'post',
-      body: JSON.stringify({ login, password }),
+      body: JSON.stringify({ username, phone_number, password }),
       headers: fetchConfig(),
     })
   }
 
-  handleUsernameInput = (e) => {
+  handleEmailInput = (e) => {
     this.setState({
-      user: e.target.value
+      email: e.target.value
+    })
+  }
+
+  handlePhoneNumberInput = (e) => {
+    this.setState({
+      phoneNumber: e.target.value
     })
   }
 
@@ -112,13 +123,18 @@ class Login extends Component {
         <Container>
           <HeaderContainer>
             <h1>
-              Login
+              Sign Up
             </h1>
           </HeaderContainer>
           <AuthInputContainer>
             <AuthInput
-              onChange={(e) => {this.handleUsernameInput(e)}}
-              placeholder="Username or Phone #"
+              onChange={(e) => {this.handleEmailInput(e)}}
+              placeholder="Email address"
+              type="text"
+            />
+            <AuthInput
+              onChange={(e) => {this.handlePhoneNumberInput(e)}}
+              placeholder="Phone number"
               type="text"
             />
             <AuthInput
@@ -126,9 +142,9 @@ class Login extends Component {
               placeholder="Password"
               type="password"
             />
-            <LoginButton onClick={this.handleOnClick}>
-              Login
-            </LoginButton>
+            <SignUpButton onClick={this.handleOnClick}>
+              Sign Up
+            </SignUpButton>
           </AuthInputContainer>
         </Container>
       </Layout>
@@ -136,4 +152,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default SignUp;
