@@ -75,7 +75,7 @@ const Home = ({ history: { goBack }}) => (
       >
         I can provide supplies
       </External>
-      <Category to="/looking_for_help/housing">
+      <Category to="/helping/housing">
         I can provide housing
       </Category>
       <External
