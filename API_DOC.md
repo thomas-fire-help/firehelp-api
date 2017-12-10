@@ -4,7 +4,18 @@
 * [Authentication](#authentication)
   * [Login](#login)
   * [Register](#register)
-
+* [Tag](#tag)
+  * [Index](#index)
+  * [Show](#show)
+  * [Create](#create)
+  * [Update](#update)
+  * [Destroy](#destroy)
+* [Housing](#housing)
+  * [Index](#index-1)
+  * [Show](#show-1)
+  * [Create](#create-1)
+  * [Update](#update-1)
+  * [Destroy](#destroy-1)
 
 # Authentication
 ## Login
@@ -13,13 +24,36 @@ api :POST, '/auth/login'
 param :login,    String, desc: 'Phone # or Username', required: true
 param :password, String, desc: "User's password",     required: true
 ```
-
 ## Register
 ```
 api :POST, '/auth/register'
 param :username,     String, desc: 'Username',     required: true
 param :phone_number, String, desc: 'Phone Number', required: true
 param :password,     String, desc: "Password",     required: true
+```
+
+# Tag
+## Index
+```
+api :GET, '/tags'
+```
+## Show
+```
+api :GET, '/tags/:id', desc: "Requires admin"
+```
+## Create
+```
+api :POST, '/tags', desc: "Requires admin"
+param :name String,  required: true
+```
+## Update
+```
+api :PATCH/PUT, '/tags/:id', desc: "Requires admin"
+param :name String,  required: true
+```
+## Destroy
+```
+api :DELETE, '/tags/:id'
 ```
 
 # Housing
@@ -67,5 +101,3 @@ param :tags           String,  desc: "Comma separated string of Tag IDs"
 ```
 api :DELETE, '/housings/:id'
 ```
-
-## Create
