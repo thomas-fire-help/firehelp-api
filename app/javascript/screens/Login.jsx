@@ -69,6 +69,7 @@ const LoginButton = styled.button`
   width: 10rem;
   text-transform: uppercase;
   margin-top: 2rem;
+  cursor: pointer;  
 `
 
 class Login extends Component {

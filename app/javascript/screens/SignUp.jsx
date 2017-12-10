@@ -64,6 +64,7 @@ const LoginButton = styled.button`
   background: none;
   border: 1px solid #000;
   border-radius: 3px;
+  cursor: pointer;
   font-size: 1.25rem;
   height: 2.5rem;
   width: 10rem;
@@ -93,12 +94,12 @@ class Login extends Component {
 
   handleOnClick = () => {
     const { email: username, phoneNumber: phone_number, password } = this.state;
-    console.log('SIGNUP DATA TO POST', username, phone_number, password);
+    console.log('SIGNUP DATA TO POST', JSON.stringify({ username, phone_number, password }));
     console.log(fetchConfig());
 
     fetch('auth/register', {
       method: 'post',
-      body: { username, phone_number, password },
+      body: JSON.stringify({ username, phone_number, password }),
       headers: fetchConfig(),
     })
   }
