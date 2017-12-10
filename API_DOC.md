@@ -77,6 +77,7 @@ param :pin Integer, desc: "4 digit pin for user's phone verification", required:
 api :GET, '/tags'
 param :page     Integer, desc: "What page to get"
 param :per_page Integer, default: 25 desc: "How many results per page"
+param :category String, desc: "Filter by tag's category"
 ```
 ## Show
 ```

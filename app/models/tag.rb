@@ -14,4 +14,12 @@ class Tag < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w(housing) }
   has_many :tag_taggables
   has_many :taggables, through: :tag_taggables
+
+  def self.filter_by_category(category)
+    if category
+      where(category: category)
+    else
+      all
+    end
+  end
 end
