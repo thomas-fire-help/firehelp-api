@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :verify, :verify_post, :resend_verification]
   skip_before_action :authenticate_request, only: %i[login register]
+  before_action :require_admin, only: [:index, :destroy]
 
   def login
     authenticate params[:login], params[:password]
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.page((params[:page] || 0)).per((params[:per_page] || Settings.default.per_page))
   end
 
   # GET /users/1
