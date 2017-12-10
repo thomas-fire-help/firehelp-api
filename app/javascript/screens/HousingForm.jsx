@@ -3,73 +3,100 @@ import { connectModule } from 'redux-modules'
 import { compose, withStateHandlers } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
-import { Input, Radio, Checkbox} from 'antd';
+import { Container, HeaderContainer } from '../components/atoms'
+import { Input, Radio, Checkbox, Button } from 'antd'
+import styled from 'styled-components'
+const RadioGroup = Radio.Group
+const { TextArea } = Input
 
-const RadioGroup = Radio.Group;
-const { TextArea } = Input;
+const RequiredIndicator = styled.em`
+  color: red;
+`
+
+const Label = styled.label`
+  font-size: 1rem;
+`
+
+const StackInput = ({ required, children, label }) => (
+  <div>
+    <Label>
+      {required && <RequiredIndicator>*</RequiredIndicator>} {label}
+    </Label>
+    <div>
+      {children}
+    </div>
+  </div>
+)
 
 const Housing = ({ actions, formData, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
-    <Input placeholder="Number of beds" />
-    <Input placeholder="City" />
-    <div>
-      <label>Length Available</label>  
-      <RadioGroup>
-        <Radio value={1}>Short-Term: one week or less</Radio>
-        <Radio value={2}>Long-Term: one month to one week </Radio>
-        <Radio value={3}>Permanent: available for rent or lease</Radio>
-      </RadioGroup>
-    </div>
+    <Container>
+      <HeaderContainer>
+        Enter Housing Information
+      </HeaderContainer>
+      <StackInput required label="Housing Type:">
 
-    <div>
-      <Checkbox>
-        Child Friendly
-      </Checkbox>
-    </div>
+      </StackInput>
 
-    <div>
-      <TextArea placeholder="Notes About Kids" autosize={{ minRows: 2 }} />
-    </div>
+      <StackInput required label="Beds Available:">
 
-    <div>
-      <h2>Pets</h2>
-      <Checkbox>
-        No Pets Allowed // Make controlled checkbox that disables below choices
-      </Checkbox>
-      <Checkbox>
-        Large Dogs (more than 50 lbs.)
-      </Checkbox>
-      <Checkbox>
-        Small Dogs (less than 50 lbs.)
-      </Checkbox>
-      <Checkbox>
-        Cats
-      </Checkbox>
-      <Checkbox>
-        Horses
-      </Checkbox>
-      <Checkbox>
-        Birds
-      </Checkbox>
-      <Checkbox>
-        Reptiles
-      </Checkbox>
-      <Checkbox>
-        Rodents (i.e. Rabbits, Hamsters, Gerbils)
-      </Checkbox>
-    </div>
+      </StackInput>
 
-    <div>
-      <TextArea placeholder="Pet restrictions & additional information (e.g. - large yard, dogs must be kid-friendly, indoor cats only, etc.)" autosize={{ minRows: 2 }} />
-    </div>
+      <StackInput required label="City:">
 
-    <div>
-      <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
-    </div>
+      </StackInput>
 
-    <button onClick={() => actions.create(formData)}>
-      Submit!
-    </button>
+      <StackInput label="Neighborhood:">
+
+      </StackInput>
+
+      <StackInput required label="Duration:">
+        <RadioGroup>
+          <Radio value={1}>Short-Term: one week or less</Radio>
+          <Radio value={2}>Long-Term: one month to one week </Radio>
+          <Radio value={3}>Permanent: available for rent or lease</Radio>
+        </RadioGroup>
+      </StackInput>
+
+      <StackInput required label="Price:">
+
+      </StackInput>
+
+      <StackInput label="Child Friendly:">
+
+      </StackInput>
+
+      <StackInput label="Household currently has animals?">
+
+      </StackInput>
+
+      <StackInput label="Pets allowed:">
+
+      </StackInput>
+
+
+      <StackInput label="Description of Housing:">
+        <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
+      </StackInput>
+
+      <StackInput required label="Your Name:">
+        <Input />
+      </StackInput>
+
+      <StackInput required label="Phone Number:">
+        <Input />
+      </StackInput>
+
+      <StackInput required label="Email Address:">
+        <Input />
+      </StackInput>
+
+      <div style={{ paddingTop: '1em' }}>
+        <Button onClick={() => actions.create(formData)}>
+          Submit!
+        </Button>
+      </div>
+    </Container>
   </Layout>
 )
 
@@ -81,9 +108,19 @@ export default compose(
   withStateHandlers(
     {
       formData: {
-        number_of_beds: '',
-        city: '',
-        additional_information: '',
+        housingType: '',
+        bedsAvailable: 1,
+        city: 'Ventura',
+        neighborhood: '',
+        duration: 'short_term',
+        price: 'free',
+        childFriendly: false,
+        householdHasAnimals: false,
+        petsAllowed: false,
+        description: '',
+        yourName: '',
+        phoneNumber: '',
+        RequiredIndicatorailAddress: ''
       }
     },
     {
