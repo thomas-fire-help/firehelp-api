@@ -24,11 +24,10 @@
 class Housing < ApplicationRecord
   belongs_to :user
   has_many :tag_taggables, as: :taggable
-  accepts_nested_attributes_for :tag_taggables
   has_many :tags, :through => :tag_taggables
-  accepts_nested_attributes_for :tags
 
   validates :email_address, presence: true
+  validates :phone_number, presence: true
   validates :city, presence: true
   validates :beds, presence: true
   validates :contact_name, presence: true

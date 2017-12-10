@@ -22,7 +22,7 @@ class HousingsController < ApplicationController
 
     if @housing.save
       tags = (params[:tags] || "").split(', ')
-      @housing.tags = Tag.where(id: tags)
+      @housing.tags = Tag.where(id: tags, category: 'housing')
       if @housing.save
         render :show, status: :created, location: @housing
       else
@@ -36,7 +36,7 @@ class HousingsController < ApplicationController
   # PATCH/PUT /housings/1
   # PATCH/PUT /housings/1.json
   def update
-    @housing.tags = Tag.where(id: (@housing.tags.pluck(:id) +( params[:tags] || [])).uniq)
+    @housing.tags = Tag.where(id: (@housing.tags.pluck(:id) +( params[:tags].split(', ') || [])).uniq, category: 'housing')
     render json: { error: 'Not Authorized' }, status: 401 unless @housing.user == current_user || current_user.moderator?
     if @housing.update(housing_params)
       render :show, status: :ok, location: @housing
@@ -59,6 +59,6 @@ class HousingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def housing_params
-      params.permit(:city, :beds, :length_of_stay, :child_friendly, :kid_notes, :pets_accepted, :pet_notes, :contact_name, :phone_number, :email_address, :notes)
+      params.permit(:city, :beds, :length_of_stay, :child_friendly, :kid_notes, :pets_accepted, :pet_notes, :contact_name, :phone_number, :email_address, :notes, :user_id, :status, :verified)
     end
 end
