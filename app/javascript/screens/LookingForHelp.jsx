@@ -43,7 +43,6 @@ const External = styled.a`
   padding: 25px 25px;
   text-decoration: none;
   margin-bottom: 1rem;
-  color: orange;
 
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
@@ -68,35 +67,26 @@ const Home = ({ history: { goBack }}) => (
         href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=765665098"
         target="_blank"
       >
-        FOOD & WATER
+        I need food or water
       </External>
       <External
         href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=427392080"
         target="_blank"
       >
-        EMERGENCY SUPPLIES
+        I want to pick up supplies
       </External>
-      <Category to="/">
-        CLOTHING
-      </Category>
       <External
         href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=1117680778"
         target="_blank"
       >
-        HOUSING
+        I need housing
       </External>
-      <Category to="/">
-        PERSONAL CARE ITEMS
-      </Category>
       <External
         href="https://docs.google.com/spreadsheets/d/1miFPjSVhG8NR-tpieEH3Tu9cusCAesCSfr6ro1Nbd88/edit#gid=855993057"
         target="_blank"
       >
-        ANIMAL SERVICES
+        I need help with my animals
       </External>
-      <Category to="/">
-        HEALTH AND WELLNESS
-      </Category>
     </Container>
   </Layout>
 )
