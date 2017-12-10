@@ -44,12 +44,14 @@ api :GET, '/tags/:id', desc: "Requires admin"
 ## Create
 ```
 api :POST, '/tags', desc: "Requires admin"
-param :name String,  required: true
+param :name     String,  required: true
+param :category String, options: ['housing'], required: true
 ```
 ## Update
 ```
 api :PATCH/PUT, '/tags/:id', desc: "Requires admin"
-param :name String,  required: true
+param :name     String,  required: true
+param :category String, options: ['housing'], required: true
 ```
 ## Destroy
 ```
