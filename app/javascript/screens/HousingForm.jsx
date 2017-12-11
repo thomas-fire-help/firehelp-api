@@ -14,19 +14,24 @@ const RequiredIndicator = styled.em`
   color: red;
 `
 
-const Label = styled.label`
-  font-size: 1rem;
+const Label = styled.div`
+  font-size: 1.5rem;
+  padding: 1rem 0;
+`
+
+const StackContainer = styled.div`
+  margin: 30px 0;
 `
 
 const StackInput = ({ required, children, label }) => (
-  <div>
+  <StackContainer>
     <Label>
       {required && <RequiredIndicator>*</RequiredIndicator>} {label}
     </Label>
     <div>
       {children}
     </div>
-  </div>
+  </StackContainer>
 )
 
 const Housing = ({ actions, update, formData, history: { goBack }}) => (
@@ -52,7 +57,9 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
       </StackInput>
 
       <StackInput label="Neighborhood:">
-
+        <Input
+          onChange={value => update('neighborhood', value)}
+        />
       </StackInput>
 
       <StackInput required label="Duration:">
@@ -64,19 +71,35 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
       </StackInput>
 
       <StackInput required label="Price:">
-
+        <SegmentedController
+          value={formData.price}
+          onChange={value => update('price', value)}
+          options={["Free", "Paid"]}
+        />
       </StackInput>
 
       <StackInput label="Child Friendly:">
-
+        <SegmentedController
+          value={formData.childFriendly}
+          onChange={value => update('childFriendly', value)}
+          options={["Yes", "No"]}
+        />
       </StackInput>
 
       <StackInput label="Household currently has animals?">
-
+        <SegmentedController
+          value={formData.currentlyHasAnimals}
+          onChange={value => update('currentlyHasAnimals', value)}
+          options={["Yes", "No"]}
+        />
       </StackInput>
 
       <StackInput label="Pets allowed:">
-
+        <SegmentedController
+          value={formData.petsAllowed}
+          onChange={value => update('petsAllowed', value)}
+          options={["Yes", "No"]}
+        />
       </StackInput>
 
 
@@ -85,15 +108,21 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
       </StackInput>
 
       <StackInput required label="Your Name:">
-        <Input />
+        <Input
+          onChange={value => update('name', value)}
+        />
       </StackInput>
 
       <StackInput required label="Phone Number:">
-        <Input />
+        <Input
+          onChange={value => update('phoneNumber', value)}
+        />
       </StackInput>
 
       <StackInput required label="Email Address:">
-        <Input />
+        <Input
+          onChange={value => update('emailAddress', value)}
+        />
       </StackInput>
 
       <div style={{ paddingTop: '1em' }}>
