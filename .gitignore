@@ -23,7 +23,6 @@
 .byebug_history
 .env
 /public/packs-test
-/node_modules
 
 
 config/settings.local.yml
