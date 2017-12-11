@@ -38,16 +38,16 @@ const Container = styled.div`
 const SegmentedController = ({ onChange, value, options }) => (
   <div>
     <LeftSegment
-      active={value === options[0]}
-      onClick={() => onChange(options[0])}
+      active={value === options[0].value}
+      onClick={() => onChange(options[0].value)}
     >
-      {options[0]}
+      {options[0].label}
     </LeftSegment>
     <RightSegment
-      active={value === options[1]}
-      onClick={() => onChange(options[1])}
+      active={value === options[1].value}
+      onClick={() => onChange(options[1].value)}
     >
-      {options[1]}
+      {options[1].label}
     </RightSegment>
   </div>
 )

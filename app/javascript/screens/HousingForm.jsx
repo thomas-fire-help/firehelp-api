@@ -45,7 +45,10 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <SegmentedController
           value={formData.housingType}
           onChange={value => update('housingType', value)}
-          options={["Entire Home", "Private Room"]}
+          options={[
+            {label: 'Entire Home', value: 'entire_home'},
+            {label: 'Private Room', value: 'private_room'}
+          ]}
         />
       </StackInput>
 
@@ -53,6 +56,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <Select
           showSearch
           style={{ width: '100%' }}
+          value={formData.bedsAvailable}
           placeholder="Select number of beds available"
           optionFilterProp="children"
           onChange={value => change('city', value)}
@@ -70,6 +74,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <Select
           showSearch
           style={{ width: '100%' }}
+          value={formData.city}
           placeholder="Select a city"
           optionFilterProp="children"
           onChange={value => change('city', value)}
@@ -102,7 +107,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <SegmentedController
           value={formData.price}
           onChange={value => update('price', value)}
-          options={["Free", "Paid"]}
+          options={[{ label: "Free", value: 'free' }, { label: "Paid", value: 'paid' }]}
         />
       </StackInput>
 
@@ -110,7 +115,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <SegmentedController
           value={formData.childFriendly}
           onChange={value => update('childFriendly', value)}
-          options={["Yes", "No"]}
+          options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
         />
       </StackInput>
 
@@ -118,7 +123,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <SegmentedController
           value={formData.currentlyHasAnimals}
           onChange={value => update('currentlyHasAnimals', value)}
-          options={["Yes", "No"]}
+          options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
         />
       </StackInput>
 
@@ -126,7 +131,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
         <SegmentedController
           value={formData.petsAllowed}
           onChange={value => update('petsAllowed', value)}
-          options={["Yes", "No"]}
+          options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
         />
       </StackInput>
 
@@ -170,15 +175,15 @@ export default compose(
   withStateHandlers(
     {
       formData: {
-        housingType: '',
+        housingType: 'private_room',
         bedsAvailable: 1,
-        city: 'Ventura',
+        city: 'ventura',
         neighborhood: '',
         duration: 'short_term',
         price: 'free',
-        childFriendly: false,
-        householdHasAnimals: false,
-        petsAllowed: false,
+        childFriendly: 'yes',
+        householdHasAnimals: 'no',
+        petsAllowed: 'yes',
         description: '',
         yourName: '',
         phoneNumber: '',
