@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: uploads
+#
+#  id              :integer          not null, primary key
+#  key             :string
+#  uploadable_id   :integer
+#  uploadable_type :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: MyString
+  uploadable_id: 1
+  uploadable_type: MyString
+
+two:
+  key: MyString
+  uploadable_id: 1
+  uploadable_type: MyString

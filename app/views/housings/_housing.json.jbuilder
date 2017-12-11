@@ -23,4 +23,8 @@ json.tags housing.tags do |tag|
   json.id tag.id
   json.name tag.name
 end
+json.uploads housing.uploads do |upload|
+  json.id upload.id
+  json.url upload.url('housing')
+end
 json.url housing_url(housing, format: :json)

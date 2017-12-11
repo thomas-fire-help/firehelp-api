@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get 'helping/housing', to: 'static#home'
   get 'login', to: 'static#home'
   get 'sign_up', to: 'static#home'
+  get 'housings/upload_url', to: 'housings#upload_url'
 
   root to: 'static#home'
 end

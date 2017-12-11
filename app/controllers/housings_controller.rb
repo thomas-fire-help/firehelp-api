@@ -21,8 +21,15 @@ class HousingsController < ApplicationController
     @housing.user = current_user
 
     if @housing.save
+      # Save Tags
       tags = (params[:tags] || "").split(', ')
       @housing.tags = Tag.where(id: tags, category: 'housing')
+
+      # Save Uploads
+      params[:uploads].each do |upload|
+        @housing.uploads.new(key: upload)
+      end
+
       if @housing.save
         render :show, status: :created, location: @housing
       else
@@ -42,6 +49,17 @@ class HousingsController < ApplicationController
       render :show, status: :ok, location: @housing
     else
       render json: @housing.errors, status: :unprocessable_entity
+    end
+  end
+
+  def upload_url
+    options = { path_style: true }
+    headers = { "Content-Type" => params[:contentType], "x-amz-acl" => "public-read" }
+
+    url = storage.put_object_url('thomas-fire-help', "housings/#{params[:objectName]}", 15.minutes.from_now.to_time.to_i, headers, options)
+
+    respond_to do |format|
+      format.json { render json: { signedUrl: url } }
     end
   end
 
@@ -73,6 +91,7 @@ class HousingsController < ApplicationController
                     :contact_name,
                     :phone_number,
                     :email_address,
-                    :notes)
+                    :notes,
+                    uploads: [])
     end
 end
