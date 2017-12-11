@@ -4,10 +4,11 @@ import { compose, withStateHandlers } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
 import { Container, HeaderContainer } from '../components/atoms'
-import { Input, Radio, Checkbox, Button } from 'antd'
+import { Input, Radio, Checkbox, Button, Select } from 'antd'
 import styled from 'styled-components'
 import SegmentedController from '../components/SegmentedController'
 const RadioGroup = Radio.Group
+const Option = Select.Option
 const { TextArea } = Input
 
 const RequiredIndicator = styled.em`
@@ -49,11 +50,38 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
       </StackInput>
 
       <StackInput required label="Beds Available:">
-
+        <Select
+          showSearch
+          style={{ width: '100%' }}
+          placeholder="Select number of beds available"
+          optionFilterProp="children"
+          onChange={value => change('city', value)}
+          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+        >
+          <Option value="1">1</Option>
+          <Option value="2">2</Option>
+          <Option value="3">3</Option>
+          <Option value="4">4</Option>
+          <Option value="5">5+</Option>
+        </Select>
       </StackInput>
 
       <StackInput required label="City:">
-
+        <Select
+          showSearch
+          style={{ width: '100%' }}
+          placeholder="Select a city"
+          optionFilterProp="children"
+          onChange={value => change('city', value)}
+          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+        >
+          <Option value="goleta">Goleta</Option>
+          <Option value="ojai">Ojai</Option>
+          <Option value="santa_barbara">Santa Barbara</Option>
+          <Option value="camarillo">Camarillo</Option>
+          <Option value="ventura">Ventura</Option>
+          <Option value="thousand_oaks">Thousand Oaks</Option>
+        </Select>
       </StackInput>
 
       <StackInput label="Neighborhood:">
