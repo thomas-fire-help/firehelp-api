@@ -59,7 +59,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
           value={formData.bedsAvailable}
           placeholder="Select number of beds available"
           optionFilterProp="children"
-          onChange={value => change('city', value)}
+          onChange={value => update('bedsAvailable', value)}
           filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
         >
           <Option value="1">1</Option>
@@ -77,7 +77,7 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
           value={formData.city}
           placeholder="Select a city"
           optionFilterProp="children"
-          onChange={value => change('city', value)}
+          onChange={value => update('city', value)}
           filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
         >
           <Option value="goleta">Goleta</Option>
@@ -121,8 +121,8 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
 
       <StackInput label="Household currently has animals?">
         <SegmentedController
-          value={formData.currentlyHasAnimals}
-          onChange={value => update('currentlyHasAnimals', value)}
+          value={formData.householdHasAnimals}
+          onChange={value => update('householdHasAnimals', value)}
           options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
         />
       </StackInput>
