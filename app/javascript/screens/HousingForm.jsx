@@ -3,11 +3,45 @@ import { connectModule } from 'redux-modules'
 import { compose, withStateHandlers } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
-import { Input, InputNumber, Radio, Checkbox, Cascader} from 'antd';
+import { Input, InputNumber, Radio, Checkbox, Cascader, Upload, Button, Icon} from 'antd';
 import styled from 'styled-components'
 
+const RadioButton = Radio.Button
 const RadioGroup = Radio.Group;
 const { TextArea } = Input;
+
+const housingPhotoList = [{
+  uid: -1,
+  name: 'xxx.png',
+  status: 'done',
+  url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+  thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+}, {
+  uid: -2,
+  name: 'yyy.png',
+  status: 'done',
+  url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+  thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+}];
+
+const housingPhotoListProps = {
+  action: '//jsonplaceholder.typicode.com/posts/',
+  listType: 'picture',
+  defaultFileList: [...housingPhotoList],
+  className: 'upload-list-inline',
+};
+
+const housingType = {
+  state: 0,
+};
+
+const childFriendly = {
+  state: 0,
+};
+
+const animalsPresent = {
+  state: 0,
+}
 
 const PageHeading = styled.div`
 background-color: #f7f7f7;
@@ -15,8 +49,11 @@ text-align: center;
 padding: 1rem;
 `
 
-const NotesAboutKids = styled.div`
-background-color: seagreen;
+const ItemDiv = styled.div`
+display: flex;
+flex-direction: column;
+padding: 1rem 0rem;;
+border: 1px dashed red;
 `
 
 const durationOptions = [{
@@ -34,50 +71,67 @@ function onChangeDuration(value) {
   console.log(value);
 }
 
-const Housing = ({ actions, formData, history: { goBack }}) => (
-  <Layout header="Housing" onBack={goBack}>
+function onChangeHousingType(value) {
+  console.log(value);
+}
+
+const HousingForm = ({ actions, formData, history: { goBack }}) => (
+  <Layout header="HousingForm" onBack={goBack}>
     <PageHeading>
-      I Have Housing To Offer
+      <h3>I Have Housing To Offer</h3>
     </PageHeading>
-    <div>
-      Beds Available:
-      <InputNumber min={1} max={40} />
-    </div>
-    <div>
-      City:
-      <Input placeholder="City" />
-    </div>
-    <div>
-      Neighborhood:
-      <Input placeholder="Neighborhood" />
-    </div>
-    <div>
-      <label>Length Available</label>  
-      <RadioGroup>
-        <Radio value={1}>Short-Term: one week or less</Radio>
-        <Radio value={2}>Long-Term: one month to one week </Radio>
-        <Radio value={3}>Permanent: available for rent or lease</Radio>
+
+    <ItemDiv>
+      <label>Housing Type:</label>
+      <RadioGroup onChange={onChangeHousingType} defaultValue="a" value={housingType.state.value}>
+        <RadioButton value="a">Entire Home</RadioButton>
+        <RadioButton value="b">Private Room</RadioButton>
       </RadioGroup>
-    </div>
-    <div>
-      <label>Length Available</label>  
+      
+    </ItemDiv>
+    
+    <ItemDiv>
+      <label>Beds Available:</label>
+      <InputNumber min={1} max={40} /*style={this.defaultProps.styles.inputNumber}*/ />
+    </ItemDiv>
+    <ItemDiv>
+      City:
+      <Input />
+    </ItemDiv>
+    <ItemDiv>
+      Neighborhood:
+      <Input />
+    </ItemDiv>
+    <ItemDiv>
+      <label>Length Available:</label>  
       <Cascader options = {durationOptions} onChange = {onChangeDuration} placeholder="Select" />
-    </div>
+    </ItemDiv>
 
-    <div>
-      <Checkbox>
-        Child Friendly
-      </Checkbox>
-    </div>
+    <ItemDiv>
+      Child Friendly:
+      <RadioGroup value={childFriendly.state.value}>
+        <Radio value={1}>Yes</Radio>
+        <Radio value={2}>No</Radio>
+      </RadioGroup>
+    </ItemDiv>
 
-    <div>
-      <NotesAboutKids>
-        <TextArea placeholder="Notes About Kids" autosize={{ minRows: 2 }} />
-      </NotesAboutKids>
-    </div>
+    <ItemDiv>
+      Notes About Children:
+      <TextArea autosize={{ minRows: 2 }} />
+    </ItemDiv>
 
-    <div>
-      <h2>Pets</h2>
+    <ItemDiv>
+      Household currently has animals?:
+      <RadioGroup value={animalsPresent.state.value}>
+        <Radio value={1}>Yes</Radio>
+        <Radio value={2}>No</Radio>
+      </RadioGroup>
+      What type(s)?:
+      <TextArea />
+    </ItemDiv>
+
+    <ItemDiv>
+      Pets
       <Checkbox>
         No Pets Allowed // Make controlled checkbox that disables below choices
       </Checkbox>
@@ -102,16 +156,27 @@ const Housing = ({ actions, formData, history: { goBack }}) => (
       <Checkbox>
         Rodents (i.e. Rabbits, Hamsters, Gerbils)
       </Checkbox>
-    </div>
+    </ItemDiv>
 
-    <div>
-      <TextArea placeholder="Pet restrictions & additional information (e.g. - large yard, dogs must be kid-friendly, indoor cats only, etc.)" autosize={{ minRows: 2 }} />
-    </div>
+    <ItemDiv>
+      Notes About Pets:
+      <TextArea autosize={{ minRows: 2 }} />
+    </ItemDiv>
 
-    <div>
+    <ItemDiv>
+      Photo(s) of Housing:
+      <Upload {...housingPhotoListProps}>
+        <Button>
+          <Icon type="upload" /> upload
+        </Button>
+      </Upload>
+      <br />
+  </ItemDiv>
+
+    <ItemDiv>
       Additional Information
       <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
-    </div>
+    </ItemDiv>
 
     <button onClick={() => actions.create(formData)}>
       Submit!
@@ -119,8 +184,11 @@ const Housing = ({ actions, formData, history: { goBack }}) => (
   </Layout>
 )
 
-Housing.defaultProps = {
-
+HousingForm.defaultProps = {
+  styles: {
+    inputNumber: {fontFamily: "Montserrat",
+                  color: "red"}
+  }
 }
 
 export default compose(
@@ -137,4 +205,7 @@ export default compose(
     }
   ),
   connectModule(housingModule)
-)(Housing)
+)(HousingForm)
+
+
+
