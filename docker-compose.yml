@@ -2,6 +2,11 @@ version: '2'
 services:
   db:
     image: postgres
+  webpack:
+    build: .
+    command: bin/webpack
+    environment:
+      - NODE_ENV=production
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -15,6 +20,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - webpack
     environment:
       - RAILS_ENV=development
       - SECRET_KEY_BASE=37748936af7393bd0f80b9f43fe005ab534f69be1b0ba901d58d73cdc08ff5e8903e8b007691a34d769a21a3191f46dff05f093f500c5681a564de3684f28b6f
