@@ -59,6 +59,20 @@ class HousingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def housing_params
-      params.permit(:city, :beds, :length_of_stay, :child_friendly, :kid_notes, :pets_accepted, :pet_notes, :contact_name, :phone_number, :email_address, :notes)
+      params.permit(:city,
+                    :beds,
+                    :paid,
+                    :neighborhood,
+                    :housing_type,
+                    :has_animals,
+                    :length_of_stay,
+                    :child_friendly,
+                    :kid_notes,
+                    :pets_accepted,
+                    :pet_notes,
+                    :contact_name,
+                    :phone_number,
+                    :email_address,
+                    :notes)
     end
 end

@@ -118,6 +118,10 @@ api :GET, '/housings/:id'
 api :POST, '/housings'
 param :city           String,  required: true
 param :beds           Integer, required: true
+param :has_animals    Boolean, required: true
+param :paid           Boolean, required: true
+param :neighborhood   String
+param :housing_type   String, options: ['house', 'room'], required: true
 param :length_of_stay String,  options: ['short', 'long', 'permanent'], required: true
 param :child_friendly Boolean, required: true
 param :kid_notes      Text

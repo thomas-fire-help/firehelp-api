@@ -29,10 +29,13 @@ class Housing < ApplicationRecord
   validates :email_address, presence: true
   validates :city, presence: true
   validates :beds, presence: true
+  validates :paid, inclusion: { in: [ true, false ] }
+  validates :has_animals, inclusion: { in: [ true, false ] }
   validates :contact_name, presence: true
   validates :length_of_stay, presence: true, inclusion: { in: %w(short long permanent) }
-  validates :child_friendly, presence: true
-  validates :pets_accepted, presence: true
+  validates :housing_type, presence: true, inclusion: { in: %w(house room) }
+  validates :child_friendly, inclusion: { in: [ true, false ] }
+  validates :pets_accepted, inclusion: { in: [ true, false ] }
   validates :status, inclusion: { in: %w(available claimed archived) }
 
   scope :active, -> { where.not(status: "archived") }
