@@ -3,73 +3,167 @@ import { connectModule } from 'redux-modules'
 import { compose, withStateHandlers } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
-import { Input, Radio, Checkbox} from 'antd';
+import { Container, HeaderContainer } from '../components/atoms'
+import { Input, Radio, Checkbox, Button, Select } from 'antd'
+import styled from 'styled-components'
+import SegmentedController from '../components/SegmentedController'
+const RadioGroup = Radio.Group
+const Option = Select.Option
+const { TextArea } = Input
 
-const RadioGroup = Radio.Group;
-const { TextArea } = Input;
+const RequiredIndicator = styled.em`
+  color: red;
+`
 
-const Housing = ({ actions, formData, history: { goBack }}) => (
+const Label = styled.div`
+  font-size: 1.5rem;
+  padding: 1rem 0;
+`
+
+const StackContainer = styled.div`
+  margin: 30px 0;
+`
+
+const StackInput = ({ required, children, label }) => (
+  <StackContainer>
+    <Label>
+      {required && <RequiredIndicator>*</RequiredIndicator>} {label}
+    </Label>
+    <div>
+      {children}
+    </div>
+  </StackContainer>
+)
+
+const Housing = ({ actions, update, formData, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
-    <Input placeholder="Number of beds" />
-    <Input placeholder="City" />
-    <div>
-      <label>Length Available</label>  
-      <RadioGroup>
-        <Radio value={1}>Short-Term: one week or less</Radio>
-        <Radio value={2}>Long-Term: one month to one week </Radio>
-        <Radio value={3}>Permanent: available for rent or lease</Radio>
-      </RadioGroup>
-    </div>
+    <Container>
+      <HeaderContainer>
+        Enter Housing Information
+      </HeaderContainer>
+      <StackInput required label="Housing Type:">
+        <SegmentedController
+          value={formData.housingType}
+          onChange={value => update('housingType', value)}
+          options={[
+            {label: 'Entire Home', value: 'entire_home'},
+            {label: 'Private Room', value: 'private_room'}
+          ]}
+        />
+      </StackInput>
 
-    <div>
-      <Checkbox>
-        Child Friendly
-      </Checkbox>
-    </div>
+      <StackInput required label="Beds Available:">
+        <Select
+          showSearch
+          style={{ width: '100%' }}
+          value={formData.bedsAvailable}
+          placeholder="Select number of beds available"
+          optionFilterProp="children"
+          onChange={value => update('bedsAvailable', value)}
+          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+        >
+          <Option value="1">1</Option>
+          <Option value="2">2</Option>
+          <Option value="3">3</Option>
+          <Option value="4">4</Option>
+          <Option value="5">5+</Option>
+        </Select>
+      </StackInput>
 
-    <div>
-      <TextArea placeholder="Notes About Kids" autosize={{ minRows: 2 }} />
-    </div>
+      <StackInput required label="City:">
+        <Select
+          showSearch
+          style={{ width: '100%' }}
+          value={formData.city}
+          placeholder="Select a city"
+          optionFilterProp="children"
+          onChange={value => update('city', value)}
+          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+        >
+          <Option value="goleta">Goleta</Option>
+          <Option value="ojai">Ojai</Option>
+          <Option value="santa_barbara">Santa Barbara</Option>
+          <Option value="camarillo">Camarillo</Option>
+          <Option value="ventura">Ventura</Option>
+          <Option value="thousand_oaks">Thousand Oaks</Option>
+        </Select>
+      </StackInput>
 
-    <div>
-      <h2>Pets</h2>
-      <Checkbox>
-        No Pets Allowed // Make controlled checkbox that disables below choices
-      </Checkbox>
-      <Checkbox>
-        Large Dogs (more than 50 lbs.)
-      </Checkbox>
-      <Checkbox>
-        Small Dogs (less than 50 lbs.)
-      </Checkbox>
-      <Checkbox>
-        Cats
-      </Checkbox>
-      <Checkbox>
-        Horses
-      </Checkbox>
-      <Checkbox>
-        Birds
-      </Checkbox>
-      <Checkbox>
-        Reptiles
-      </Checkbox>
-      <Checkbox>
-        Rodents (i.e. Rabbits, Hamsters, Gerbils)
-      </Checkbox>
-    </div>
+      <StackInput label="Neighborhood:">
+        <Input
+          onChange={value => update('neighborhood', value)}
+        />
+      </StackInput>
 
-    <div>
-      <TextArea placeholder="Pet restrictions & additional information (e.g. - large yard, dogs must be kid-friendly, indoor cats only, etc.)" autosize={{ minRows: 2 }} />
-    </div>
+      <StackInput required label="Duration:">
+        <RadioGroup value={formData.duration} onChange={({ target }) => update('duration', target.value)}>
+          <Radio value={'short_term'}>Short-Term: one week or less</Radio>
+          <Radio value={'long_term'}>Long-Term: one month to one week </Radio>
+          <Radio value={'permanent'}>Permanent: available for rent or lease</Radio>
+        </RadioGroup>
+      </StackInput>
 
-    <div>
-      <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
-    </div>
+      <StackInput required label="Price:">
+        <SegmentedController
+          value={formData.price}
+          onChange={value => update('price', value)}
+          options={[{ label: "Free", value: 'free' }, { label: "Paid", value: 'paid' }]}
+        />
+      </StackInput>
 
-    <button onClick={() => actions.create(formData)}>
-      Submit!
-    </button>
+      <StackInput label="Child Friendly:">
+        <SegmentedController
+          value={formData.childFriendly}
+          onChange={value => update('childFriendly', value)}
+          options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
+        />
+      </StackInput>
+
+      <StackInput label="Household currently has animals?">
+        <SegmentedController
+          value={formData.householdHasAnimals}
+          onChange={value => update('householdHasAnimals', value)}
+          options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
+        />
+      </StackInput>
+
+      <StackInput label="Pets allowed:">
+        <SegmentedController
+          value={formData.petsAllowed}
+          onChange={value => update('petsAllowed', value)}
+          options={[{ label: "Yes", value: 'yes' }, { label: "No", value: 'no' }]}
+        />
+      </StackInput>
+
+
+      <StackInput label="Description of Housing:">
+        <TextArea placeholder="Additional Information" autosize={{ minRows: 2 }} />
+      </StackInput>
+
+      <StackInput required label="Your Name:">
+        <Input
+          onChange={value => update('name', value)}
+        />
+      </StackInput>
+
+      <StackInput required label="Phone Number:">
+        <Input
+          onChange={value => update('phoneNumber', value)}
+        />
+      </StackInput>
+
+      <StackInput required label="Email Address:">
+        <Input
+          onChange={value => update('emailAddress', value)}
+        />
+      </StackInput>
+
+      <div style={{ paddingTop: '1em' }}>
+        <Button onClick={() => actions.create(formData)}>
+          Submit!
+        </Button>
+      </div>
+    </Container>
   </Layout>
 )
 
@@ -81,13 +175,23 @@ export default compose(
   withStateHandlers(
     {
       formData: {
-        number_of_beds: '',
-        city: '',
-        additional_information: '',
+        housingType: 'private_room',
+        bedsAvailable: 1,
+        city: 'ventura',
+        neighborhood: '',
+        duration: 'short_term',
+        price: 'free',
+        childFriendly: 'yes',
+        householdHasAnimals: 'no',
+        petsAllowed: 'yes',
+        description: '',
+        yourName: '',
+        phoneNumber: '',
+        RequiredIndicatorailAddress: ''
       }
     },
     {
-      update: (state) => (payload) => ({ [payload.key]: payload.value })
+      update: (state) => (key, value) => Object.assign({}, { formData: { ... state.formData, [key]: value  } })
     }
   ),
   connectModule(housingModule)

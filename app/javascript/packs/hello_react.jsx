@@ -19,6 +19,7 @@ import Housing from '../screens/Housing'
 import HousingForm from '../screens/HousingForm'
 import Login from '../screens/Login'
 import SignUp from '../screens/SignUp'
+import './app.css'
 
 const store = createStore(s => s, {}, install());
 
