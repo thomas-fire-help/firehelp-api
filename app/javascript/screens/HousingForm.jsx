@@ -96,10 +96,10 @@ const Housing = ({ actions, update, formData, history: { goBack }}) => (
       </StackInput>
 
       <StackInput required label="Duration:">
-        <RadioGroup>
-          <Radio value={1}>Short-Term: one week or less</Radio>
-          <Radio value={2}>Long-Term: one month to one week </Radio>
-          <Radio value={3}>Permanent: available for rent or lease</Radio>
+        <RadioGroup value={formData.duration} onChange={({ target }) => update('duration', target.value)}>
+          <Radio value={'short_term'}>Short-Term: one week or less</Radio>
+          <Radio value={'long_term'}>Long-Term: one month to one week </Radio>
+          <Radio value={'permanent'}>Permanent: available for rent or lease</Radio>
         </RadioGroup>
       </StackInput>
 
