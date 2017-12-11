@@ -81,7 +81,7 @@ function onChangeHousingType(value) {
   console.log(value);
 }
 
-const HousingForm = ({ actions, formData, history: { goBack }}) => (
+const HousingForm = ({ actions, formData, history: { goBack }, styles }) => (
   <Layout header="HousingForm" onBack={goBack}>
     <FormContainer>
       <PageHeading>
@@ -94,12 +94,11 @@ const HousingForm = ({ actions, formData, history: { goBack }}) => (
           <RadioButton value="a">Entire Home</RadioButton>
           <RadioButton value="b">Private Room</RadioButton>
         </RadioGroup>
-        
       </ItemDiv>
       
       <ItemDiv>
         <label>Beds Available:</label>
-        <InputNumber min={1} max={40} /*style={this.defaultProps.styles.inputNumber}*/ />
+        <InputNumber min={1} max={40} style={styles.inputNumber} />
       </ItemDiv>
       <ItemDiv>
         City:
