@@ -20,9 +20,8 @@ WORKDIR $APP_HOME
 
 ADD Gemfile* $APP_HOME/
 RUN bundle install
-RUN yarn
 
 ADD . $APP_HOME
 
-RUN bin/webpack
 RUN rake assets:precompile
+RUN bin/webpack

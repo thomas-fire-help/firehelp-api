@@ -23,6 +23,7 @@
 .byebug_history
 .env
 /public/packs-test
+/public/packs
 
 
 config/settings.local.yml
