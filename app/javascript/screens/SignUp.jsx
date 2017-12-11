@@ -2,23 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
+import { Container, HeaderContainer } from '../components/atoms'
 import { fetchConfig } from '../utils/fetchConfig'
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 90%;
-  width: 70vw;
-`
-
-const HeaderContainer = styled.div`
-  align-self: flex-start;
-  flex: 1;
-  text-transform: uppercase;
-  font-size: 2.25rem;
-  letter-spacing: 2px;
-`
 
 const AuthInputContainer = styled.div`
   display: flex;
