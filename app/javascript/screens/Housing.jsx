@@ -1,21 +1,11 @@
 import React from 'react'
 import { connectModule } from 'redux-modules'
-import { Spinner } from '@procore/core-react'
 import { compose, lifecycle } from 'recompose'
 import housingModule from '../modules/housing'
 import Layout from '../components/Layout'
 
 const Housing = ({ loading, data, history: { goBack }}) => (
   <Layout header="Housing" onBack={goBack}>
-    <Spinner loading={loading}>
-      {data.map(listing => (
-        <div>
-          <h2>
-            {listing.title}
-          </h2>
-        </div>
-      ))}
-    </Spinner>
   </Layout>
 )
 
