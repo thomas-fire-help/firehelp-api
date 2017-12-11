@@ -19,12 +19,17 @@
 #  verified       :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  paid           :boolean
+#  neighborhood   :string
+#  housing_type   :string
+#  has_animals    :boolean
 #
 
 class Housing < ApplicationRecord
   belongs_to :user
   has_many :tag_taggables, as: :taggable
   has_many :tags, :through => :tag_taggables
+  has_many :uploads, as: :uploadable
 
   validates :email_address, presence: true
   validates :city, presence: true
