@@ -24,4 +24,5 @@ RUN yarn
 
 ADD . $APP_HOME
 
+RUN bin/webpack
 RUN rake assets:precompile
