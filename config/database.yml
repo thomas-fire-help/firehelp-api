@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: <%= ENV.fetch("DB_USERNAME", "postgres") %>
-  host: <%= ENV.fetch("DATABASE_URL", 'localhost') %>
+  host: <%= ENV.fetch("HEROKU_POSTGRESQL_BLUE_URL", 'localhost') %>
   password: <%= ENV.fetch("DB_PASSWORD", "") %>
   pool: 5
 
@@ -17,4 +17,3 @@ test:
 production:
   <<: *default
   database: production
-  host: <%= ENV["HEROKU_POSTGRESQL_BLUE_URL"] %>
