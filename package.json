@@ -1,5 +1,5 @@
 {
-  "name": "thomas-fire-help",
+  "name": "firehelp-api",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.0.2"

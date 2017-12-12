@@ -8,11 +8,11 @@ default: &default
 
 development:
   <<: *default
-  database: thomas_fire_help_development
+  database: fire_help_api_development
 
 test:
   <<: *default
-  database: thomas_fire_help_test
+  database: fire_help_api_test
 
 production:
   <<: *default
