@@ -8,15 +8,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90%;
-  width: 70vw;
+  height: 100vh;
+  width: 100%;
 `
 
 const HeaderContainer = styled.div`
   align-self: flex-start;
-  flex: 1;
   text-transform: uppercase;
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   letter-spacing: 2px;
 `
 
@@ -33,8 +32,9 @@ const AuthInput = styled.input`
   border-bottom: 1px solid #000;
   border-radius: 0;
   color: #000;
-  padding: 2rem 0rem .5rem 0rem;
-  font-size: 2rem;
+  padding: 2rem 0rem 1rem 0rem;
+  margin-top: 2rem;
+  font-size: 2.5rem;
   width: 100%;
   &:focus {
     caret-color: #000;
