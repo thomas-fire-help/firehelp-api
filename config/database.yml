@@ -17,3 +17,4 @@ test:
 production:
   <<: *default
   database: production
+  host: <%= ENV["HEROKU_POSTGRESQL_BLUE_URL"] %>
