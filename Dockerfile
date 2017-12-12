@@ -6,3 +6,4 @@ COPY Gemfile /thomas-fire-help/Gemfile
 COPY Gemfile.lock /thomas-fire-help/Gemfile.lock
 RUN bundle install
 COPY . /thomas-fire-help
+RUN sh bin/asset_check

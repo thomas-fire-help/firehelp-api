@@ -1,0 +1,5 @@
+#! bin/bash
+
+if [ "$RAILS_ENV" = "production" ]; then
+  rake assets:precompile
+fi

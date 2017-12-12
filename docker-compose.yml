@@ -15,3 +15,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    environment:
+      - RAILS_ENV=${APP_ENV}
+      - SECRET_KEY_BASE=37748936af7393bd0f80b9f43fe005ab534f69be1b0ba901d58d73cdc08ff5e8903e8b007691a34d769a21a3191f46dff05f093f500c5681a564de3684f28b6f
+      - DB_HOST=db
