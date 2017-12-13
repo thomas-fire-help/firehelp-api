@@ -43,4 +43,5 @@ class Housing < ApplicationRecord
   validates :status, inclusion: { in: %w(available claimed archived) }
 
   scope :active, -> { where.not(status: "archived") }
+  scope :by_tag, ->(tag) { joins(:tags).where("tags.name = ? AND tags.category = ?", tag, "housing") }
 end
