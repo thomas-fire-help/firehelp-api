@@ -71,7 +71,17 @@ api :POST, '/users/:id/resend_verification', desc: 'Resend text message verifica
 api :POST, '/users/:id/verify', desc: "Verify a user's phone number via pin"
 param :pin Integer, desc: "4 digit pin for user's phone verification", required: true
 ```
-
+## Send Password Reset
+```
+api :POST, '/users/:id/send_password_reset', desc: "Send a password reset link via text"
+param :url String, desc: "The url the user needs to visit to reset their password", required: true
+```
+## Reset Password
+```
+api :POST, '/users/:id/reset_password', desc: "Reset the user's password"
+param :token String, desc: "Token to reset password", required: true
+param :password String, desc: "New password for user", required: true
+```
 # Tag
 ## Index
 ```

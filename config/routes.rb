@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   resources :users do
     post :verify, on: :member
     post :resend_verification, on: :member
+    post :reset_password, on: :member
+    post :send_password_reset, on: :member
   end
   resources :user_sessions
 
