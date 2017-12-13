@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/procore/filterable.git
+  revision: c45bf7d3e246ac43d278bd0ef20ed3d8efeb965f
+  specs:
+    filterable (0.3.0)
+      rails (> 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -220,6 +227,7 @@ DEPENDENCIES
   coffee-rails
   config
   dotenv-rails
+  filterable!
   jbuilder
   jwt
   kaminari

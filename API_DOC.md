@@ -109,6 +109,22 @@ api :GET, '/housings'
 param :page     Integer, desc: "What page to get"
 param :per_page Integer, default: 25 desc: "How many results per page"
 ```
+
+### Filters
+EX: `filter[FILTER_NAME]=FILTER_VALUE`
+
+Filterable Values:
+* `:city, type: :string`
+* `:bed, type: :string`
+* `:length_of_stay, type: :string`
+* `:child_friendly, type: :boolean`
+* `:pets_accepted, type: :boolean`
+* `:verified, type: :boolean`
+* `:paid, type: :boolean`
+* `:neighborhood, type: :string`
+* `:housing_type, type: :string`
+* `:has_animals, type: :boolean`
+* `:tag, type: :scope, internal_name: :by_tag`
 ## Show
 ```
 api :GET, '/housings/:id'
