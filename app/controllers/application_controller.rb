@@ -21,6 +21,6 @@ class ApplicationController < ActionController::Base
 
   def require_verification
     @current_user = AuthorizeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user.verified?
+    render json: { error: 'Not Authorized', message: "Phone number not verified" }, status: 401 unless @current_user.verified?
   end
 end
