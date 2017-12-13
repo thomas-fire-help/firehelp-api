@@ -30,12 +30,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    redirect_to root_path if current_user != @user
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
     redirect_to root_path if current_user != @user
     respond_to do |format|
       if @user.update(user_params)
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
     @user.destroy
     respond_to do |format|
       format.json { head :no_content }
@@ -56,7 +58,8 @@ class UsersController < ApplicationController
   end
 
   def resend_verification
-    if current_user.generate_pin && current_user.send_pin
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    if @user.generate_pin && @user.send_pin
       response = { message: 'Resent Verification Token'}
       render json: response, status: :ok
     else
@@ -65,7 +68,8 @@ class UsersController < ApplicationController
   end
 
   def verify
-    if current_user.verify(params[:pin].to_i)
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    if @user.verify(params[:pin].to_i)
       response = { message: 'User verified successfully'}
       render json: response, status: :ok
     else

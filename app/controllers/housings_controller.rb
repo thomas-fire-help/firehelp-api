@@ -2,6 +2,7 @@ class HousingsController < ApplicationController
   before_action :set_housing, only: [:show, :update, :destroy]
   skip_before_action :authenticate_request, only: %i[index show]
   before_action :require_moderator, only: [:destroy]
+  before_action :require_verification, only: [:create]
 
   # GET /housings
   # GET /housings.json
@@ -36,6 +37,7 @@ class HousingsController < ApplicationController
   # PATCH/PUT /housings/1
   # PATCH/PUT /housings/1.json
   def update
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @housing.user || current_user.moderator?
     @housing.tags = Tag.where(id: (@housing.tags.pluck(:id) +( params[:tags].split(', ') || [])).uniq, category: 'housing')
     render json: { error: 'Not Authorized' }, status: 401 unless @housing.user == current_user || current_user.moderator?
     if @housing.update(housing_params)
@@ -48,6 +50,7 @@ class HousingsController < ApplicationController
   # DELETE /housings/1
   # DELETE /housings/1.json
   def destroy
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @housing.user || current_user.moderator?
     @housing.destroy
   end
 

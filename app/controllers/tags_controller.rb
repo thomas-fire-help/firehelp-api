@@ -16,6 +16,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user.moderator?
     @tag = Tag.new(tag_params)
 
     if @tag.save
@@ -28,7 +29,7 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
-
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user.moderator?
     if @tag.update(tag_params)
       render :show, status: :ok, location: @tag
     else
@@ -39,6 +40,7 @@ class TagsController < ApplicationController
   # DELETE /tags/1
   # DELETE /tags/1.json
   def destroy
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user.moderator?
     @tag.destroy
   end
 
