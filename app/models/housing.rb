@@ -19,6 +19,10 @@
 #  verified       :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  paid           :boolean
+#  neighborhood   :string
+#  housing_type   :string
+#  has_animals    :boolean
 #
 
 class Housing < ApplicationRecord
