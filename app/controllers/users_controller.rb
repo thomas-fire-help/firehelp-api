@@ -29,13 +29,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user || current_user.moderator?
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user || current_user.moderator?
     respond_to do |format|
       if @user.update(user_params)
         format.json { render :show, status: :ok, location: @user }
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user || current_user.moderator?
     @user.destroy
     respond_to do |format|
       format.json { head :no_content }
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def resend_verification
-    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user || current_user.moderator?
     if @user.generate_pin && @user.send_pin
       render json: { message: 'Resent Verification Token' }, status: :ok
     else
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def verify
-    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user.user || current_user.moderator?
+    render json: { error: 'Not Authorized' }, status: 401 unless current_user == @user || current_user.moderator?
     if @user.verify(params[:pin].to_i)
       render json: { message: 'User verified successfully' }, status: :ok
     else
