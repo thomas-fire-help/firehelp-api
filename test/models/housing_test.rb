@@ -23,6 +23,7 @@
 #  neighborhood   :string
 #  housing_type   :string
 #  has_animals    :boolean
+#  price          :string
 #
 
 require 'test_helper'

@@ -6,17 +6,18 @@ class HousingsController < ApplicationController
   before_action :require_moderator, only: [:destroy]
   before_action :require_verification, only: [:create]
 
-  filter_on :city, type: :string
-  filter_on :bed, type: :string
+  filter_on :city,           type: :string
+  filter_on :bed,            type: :string
   filter_on :length_of_stay, type: :string
   filter_on :child_friendly, type: :boolean
-  filter_on :pets_accepted, type: :boolean
-  filter_on :verified, type: :boolean
-  filter_on :paid, type: :boolean
-  filter_on :neighborhood, type: :string
-  filter_on :housing_type, type: :string
-  filter_on :has_animals, type: :boolean
-  filter_on :tag, type: :scope, internal_name: :by_tag
+  filter_on :pets_accepted,  type: :boolean
+  filter_on :verified,       type: :boolean
+  filter_on :paid,           type: :boolean
+  filter_on :price,          type: :string
+  filter_on :neighborhood,   type: :string
+  filter_on :housing_type,   type: :string
+  filter_on :has_animals,    type: :boolean
+  filter_on :tag,            type: :scope, internal_name: :by_tag
 
   # GET /housings
   # GET /housings.json
@@ -79,6 +80,7 @@ class HousingsController < ApplicationController
       params.permit(:city,
                     :beds,
                     :paid,
+                    :price,
                     :neighborhood,
                     :housing_type,
                     :has_animals,

@@ -135,6 +135,7 @@ Filterable Values:
 * `:housing_type, type: :string`
 * `:has_animals, type: :boolean`
 * `:tag, type: :scope, internal_name: :by_tag`
+* `:price, type: :string`
 ## Show
 ```
 api :GET, '/housings/:id'
@@ -146,6 +147,7 @@ param :city           String,  required: true
 param :beds           Integer, required: true
 param :has_animals    Boolean, required: true
 param :paid           Boolean, required: true
+param :price          String
 param :neighborhood   String
 param :housing_type   String, options: ['house', 'room'], required: true
 param :length_of_stay String,  options: ['short', 'long', 'permanent'], required: true
