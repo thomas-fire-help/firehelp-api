@@ -11,8 +11,7 @@ class AuthenticateUser
 
   #this is where the result gets returned
   def call
-    exp = (Time.now + 3.months).to_i
-    JsonWebToken.encode(user_id: user.id, exp: exp) if user
+    JsonWebToken.encode(user_id: user.id) if user
   end
 
   private
