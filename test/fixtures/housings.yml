@@ -23,6 +23,7 @@
 #  neighborhood   :string
 #  housing_type   :string
 #  has_animals    :boolean
+#  price          :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
