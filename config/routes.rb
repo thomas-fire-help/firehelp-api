@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     post :resend_verification, on: :member
     post :reset_password, on: :member
     post :send_password_reset, on: :member
+    get :check_session, on: :member
   end
   resources :user_sessions
 

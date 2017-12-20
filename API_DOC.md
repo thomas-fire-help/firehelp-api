@@ -11,6 +11,7 @@
   * [Destroy](#destroy)
   * [Resend Verification](#resend-verification)
   * [Verify](#verify)
+  * [Check Session](#check-session)
 * [Tag](#tag)
   * [Index](#index-2)
   * [Show](#show-1)
@@ -81,6 +82,10 @@ param :url String, desc: "The url the user needs to visit to reset their passwor
 api :POST, '/users/:id/reset_password', desc: "Reset the user's password"
 param :token String, desc: "Token to reset password", required: true
 param :password String, desc: "New password for user", required: true
+```
+## Check Session
+```
+api :GET, '/users/:id/check_session', desc: "Check to see if the user's session has expired."
 ```
 # Tag
 ## Index
