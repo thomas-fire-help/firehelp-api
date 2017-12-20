@@ -12,7 +12,9 @@ class AuthenticateUser
   #this is where the result gets returned
   def call
     if user
-      payload = { user_id: user.id, exp: 3.months.from_now.to_i }
+      expire_time = 3.months.from_now
+      payload = { user_id: user.id, exp: expire_time.to_i }
+      user.update token_expires_at: expire_time
       JWT.encode payload, ENV["HMAC_SECRET"], 'HS512'
     end
   end

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :verify, :verify_post, :resend_verification, :send_password_reset, :reset_password]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :verify, :verify_post, :resend_verification, :send_password_reset, :reset_password, :check_session]
   skip_before_action :authenticate_request, only: %i[login register send_password_reset reset_password]
   before_action :require_admin, only: [:index, :destroy]
 
+  # AUTH
   def login
     authenticate params[:login], params[:password]
   end
@@ -99,6 +100,10 @@ class UsersController < ApplicationController
     else
       render json: { message: 'No token'}, status: :unprocessable_entity
     end
+  end
+
+  def check_session
+    render json: { expired: DateTime.now >= @user.token_expires_at }, status: :ok
   end
 
   private
