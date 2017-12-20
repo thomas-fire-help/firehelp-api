@@ -11,7 +11,10 @@ class AuthenticateUser
 
   #this is where the result gets returned
   def call
-    JsonWebToken.encode(user_id: user.id) if user
+    if user
+      payload = { user_id: user.id, exp: 3.months.from_now.to_i }
+      JWT.encode payload, ENV["HMAC_SECRET"], 'HS512'
+    end
   end
 
   private

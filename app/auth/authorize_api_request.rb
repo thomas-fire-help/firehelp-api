@@ -17,11 +17,15 @@ class AuthorizeApiRequest
 
   def user
     @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
-    @user || errors.add(:token, 'Invalid token') && nil
+    @user || (errors.blank? ? errors.add(:token, 'Invalid token') : errors) && nil
   end
 
   def decoded_auth_token
-    @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+    begin
+      @decoded_auth_token ||= JWT.decode http_auth_header, ENV["HMAC_SECRET"], true, { :algorithm => 'HS512' }
+    rescue JWT::ExpiredSignature
+      errors.add(:token, 'Expired token')
+    end
   end
 
   def http_auth_header
