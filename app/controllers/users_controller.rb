@@ -103,7 +103,7 @@ class UsersController < ApplicationController
   end
 
   def check_session
-    render json: { expired: DateTime.now >= @user.token_expires_at }, status: :ok
+    render json: { message: "Authorized" }, status: :ok
   end
 
   private

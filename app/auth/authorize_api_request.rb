@@ -22,8 +22,10 @@ class AuthorizeApiRequest
 
   def decoded_auth_token
     begin
-      @decoded_auth_token ||= JWT.decode http_auth_header, ENV["HMAC_SECRET"], true, { :algorithm => 'HS512' }
-      @decoded_auth_token .first
+      if http_auth_header
+        @decoded_auth_token ||= JWT.decode http_auth_header, ENV["HMAC_SECRET"], true, { :algorithm => 'HS512' }
+        @decoded_auth_token.first
+      end
     rescue JWT::ExpiredSignature
       errors.add(:token, 'Expired token')
     end
