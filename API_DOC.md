@@ -135,18 +135,17 @@ param :per_page Integer, default: 25 desc: "How many results per page"
 EX: `filter[FILTER_NAME]=FILTER_VALUE`
 
 Filterable Values:
-* `:city, type: :string`
-* `:bed, type: :string`
-* `:length_of_stay, type: :string`
-* `:child_friendly, type: :boolean`
-* `:pets_accepted, type: :boolean`
-* `:verified, type: :boolean`
-* `:paid, type: :boolean`
-* `:neighborhood, type: :string`
-* `:housing_type, type: :string`
-* `:has_animals, type: :boolean`
-* `:tag, type: :scope, internal_name: :by_tag`
-* `:price, type: :string`
+* `:skills,               type: :string`
+* `:number_of_volunteers, type: :integer`
+* `:organization,         type: :string`
+* `:address,              type: :string`
+* `:contact_name,         type: :string`
+* `:verified,             type: :boolean`
+* `:phone_number,         type: :string`
+* `:email_address,        type: :string`
+* `:volunteer_type,       type: :string`
+* `:location,             type: :string`
+* `:tag,                  type: :scope, internal_name: :by_tag`
 ## Show
 ```
 api :GET, '/housings/:id'
@@ -207,6 +206,22 @@ api :GET, '/volunteer'
 param :page     Integer, desc: "What page to get"
 param :per_page Integer, default: 25 desc: "How many results per page"
 ```
+### Filters
+EX: `filter[FILTER_NAME]=FILTER_VALUE`
+
+Filterable Values:
+* `:city, type: :string`
+* `:bed, type: :string`
+* `:length_of_stay, type: :string`
+* `:child_friendly, type: :boolean`
+* `:pets_accepted, type: :boolean`
+* `:verified, type: :boolean`
+* `:paid, type: :boolean`
+* `:neighborhood, type: :string`
+* `:housing_type, type: :string`
+* `:has_animals, type: :boolean`
+* `:tag, type: :scope, internal_name: :by_tag`
+* `:price, type: :string`
 ## Show
 ```
 api :GET, '/volunteer/:id'
@@ -215,11 +230,11 @@ api :GET, '/volunteer/:id'
 ```
 api :POST, '/volunteer'
 param :skills                 Text,  required: true
-param :number_of_volunteers   Integer, required: true
-param :volunteer_notes        Text
-param :organization           String
-param :address                String, required: true
-param :coordinates            String, required: true
+param :number_of_volunteers   Integer, required: 'organization'
+param :volunteer_notes        Text, required: 'organization'
+param :organization           String, required: 'organization'
+param :address                String, required: 'organization'
+param :coordinates            String
 param :contact_name           String,  required: true
 param :phone_number           String,  required: true
 param :email_address          String,  required: true
@@ -228,17 +243,19 @@ param :tags                   String,  desc: "Comma separated string of Tag IDs"
 param :user_id                Integer, desc: "DO NOT CHANGE, which user the housing post belongs to"
 param :status                 String,  options: ['available', 'claimed', 'archived'], default: 'available', desc: 'Shouldn't be changed via create, only via update. Status of the posting'
 params :verified              Boolean, default: false, desc: 'Shouldn't be changed via create, only via update. Whether the posting is verified or not'
+params :volunteer_type        String, required: true, options: ['organization', 'personal']
+params :location              String, required: 'personal'
 ```
 ## Update
 `required` will only be enforced if it does not previously exist
 ```
 api :PATCH/PUT, '/volunteer/:id'
 param :skills                 Text,  required: true
-param :number_of_volunteers   Integer, required: true
-param :volunteer_notes        Text
-param :organization           String
-param :address                String, required: true
-param :coordinates            String, required: true
+param :number_of_volunteers   Integer, required: 'organization'
+param :volunteer_notes        Text, required: 'organization'
+param :organization           String, required: 'organization'
+param :address                String, required: 'organization'
+param :coordinates            String
 param :contact_name           String,  required: true
 param :phone_number           String,  required: true
 param :email_address          String,  required: true
@@ -247,6 +264,8 @@ param :tags                   String,  desc: "Comma separated string of Tag IDs"
 param :user_id                Integer, desc: "DO NOT CHANGE, which user the housing post belongs to"
 param :status                 String,  options: ['available', 'claimed', 'archived'], default: 'available', desc: 'Status of the posting'
 params :verified              Boolean, default: false, desc: 'Whether the posting is verified or not'
+params :volunteer_type        String, required: true, options: ['organization', 'personal']
+params :location              String, required: 'personal'
 ```
 ## Destroy
 ```

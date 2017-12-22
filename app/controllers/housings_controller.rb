@@ -54,7 +54,6 @@ class HousingsController < ApplicationController
   def update
     render json: { error: 'Not Authorized' }, status: 401 unless current_user == @housing.user || current_user.moderator?
     @housing.tags = Tag.where(id: (@housing.tags.pluck(:id) +( params[:tags].split(', ') || [])).uniq, category: 'housing')
-    render json: { error: 'Not Authorized' }, status: 401 unless @housing.user == current_user || current_user.moderator?
     if @housing.update(housing_params)
       render :show, status: :ok, location: @housing
     else
