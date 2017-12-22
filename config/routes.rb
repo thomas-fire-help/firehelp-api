@@ -59,16 +59,22 @@ Rails.application.routes.draw do
   resources :users do
     post :verify, on: :member
     post :resend_verification, on: :member
+    post :reset_password, on: :member
+    post :send_password_reset, on: :member
+    get :check_session, on: :member
   end
   resources :user_sessions
 
   post 'auth/login', to: 'users#login'
   post 'auth/register', to: 'users#register'
 
+  # We'll fix these later
   get 'helping', to: 'static#home'
   get 'looking_for_help', to: 'static#home'
   get 'looking_for_help/housing', to: 'static#home'
   get 'helping/housing', to: 'static#home'
+  get 'login', to: 'static#home'
+  get 'sign_up', to: 'static#home'
 
   root to: 'static#home'
 end

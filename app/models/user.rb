@@ -46,6 +46,26 @@ class User < ApplicationRecord
     response.error_code == 0
   end
 
+  def send_password_reset(reset_url=nil)
+    return false if reset_url.blank?
+    self.reset_password_token = SecureRandom.uuid
+    self.reset_password_token_expires_at = 1.hour.from_now
+    self.reset_password_sent_at = DateTime.now
+
+    if save
+      twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      response = twilio_client.messages.create(
+        to: phone_number,
+        from: ENV['TWILIO_PHONE_NUMBER'],
+        body: "[Thomas Fire Help] Reset your password here: #{pin}?token=#{reset_password_token}"
+      )
+    end
+  end
+
+  def reset_password
+
+  end
+
   def verify(entered_pin)
     update(verified: true) if self.pin == entered_pin
   end

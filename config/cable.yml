@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: thomas-fire-help_production
+  channel_prefix: firehelp-api_production

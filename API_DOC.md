@@ -11,6 +11,7 @@
   * [Destroy](#destroy)
   * [Resend Verification](#resend-verification)
   * [Verify](#verify)
+  * [Check Session](#check-session)
 * [Tag](#tag)
   * [Index](#index-2)
   * [Show](#show-1)
@@ -77,7 +78,21 @@ api :POST, '/users/:id/resend_verification', desc: 'Resend text message verifica
 api :POST, '/users/:id/verify', desc: "Verify a user's phone number via pin"
 param :pin Integer, desc: "4 digit pin for user's phone verification", required: true
 ```
-
+## Send Password Reset
+```
+api :POST, '/users/:id/send_password_reset', desc: "Send a password reset link via text"
+param :url String, desc: "The url the user needs to visit to reset their password", required: true
+```
+## Reset Password
+```
+api :POST, '/users/:id/reset_password', desc: "Reset the user's password"
+param :token String, desc: "Token to reset password", required: true
+param :password String, desc: "New password for user", required: true
+```
+## Check Session
+```
+api :GET, '/users/:id/check_session', desc: "Check to see if the user's session has expired."
+```
 # Tag
 ## Index
 ```
@@ -115,6 +130,23 @@ api :GET, '/housings'
 param :page     Integer, desc: "What page to get"
 param :per_page Integer, default: 25 desc: "How many results per page"
 ```
+
+### Filters
+EX: `filter[FILTER_NAME]=FILTER_VALUE`
+
+Filterable Values:
+* `:city, type: :string`
+* `:bed, type: :string`
+* `:length_of_stay, type: :string`
+* `:child_friendly, type: :boolean`
+* `:pets_accepted, type: :boolean`
+* `:verified, type: :boolean`
+* `:paid, type: :boolean`
+* `:neighborhood, type: :string`
+* `:housing_type, type: :string`
+* `:has_animals, type: :boolean`
+* `:tag, type: :scope, internal_name: :by_tag`
+* `:price, type: :string`
 ## Show
 ```
 api :GET, '/housings/:id'
@@ -124,6 +156,11 @@ api :GET, '/housings/:id'
 api :POST, '/housings'
 param :city           String,  required: true
 param :beds           Integer, required: true
+param :has_animals    Boolean, required: true
+param :paid           Boolean, required: true
+param :price          String
+param :neighborhood   String
+param :housing_type   String, options: ['house', 'room'], required: true
 param :length_of_stay String,  options: ['short', 'long', 'permanent'], required: true
 param :child_friendly Boolean, required: true
 param :kid_notes      Text

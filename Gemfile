@@ -12,6 +12,7 @@ gem 'bcrypt'
 gem 'coffee-rails'
 gem 'config'
 gem 'dotenv-rails'
+gem 'filterable', github: 'procore/filterable'
 gem 'jbuilder'
 gem 'jwt'
 gem 'kaminari'
@@ -23,7 +24,6 @@ gem 'simple_command'
 gem 'turbolinks'
 gem 'twilio-ruby'
 gem 'uglifier'
-gem 'webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

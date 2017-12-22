@@ -5,17 +5,25 @@ class ApplicationController < ActionController::Base
   include ExceptionHandler
 
   def authenticate_request
-    @current_user = AuthorizeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+    authorization = AuthorizeApiRequest.call(request.headers)
+    @current_user = authorization.result
+    render json: { message: 'Not Authorized', errors: authorization.errors }, status: 401 unless @current_user
   end
 
   def require_admin
-    @current_user = AuthorizeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user.admin?
+    authorization = AuthorizeApiRequest.call(request.headers)
+    @current_user = authorization.result
+    render json: { message: 'Not Authorized', errors: authorization.errors }, status: 401 unless @current_user.admin?
   end
 
   def require_moderator
+    authorization = AuthorizeApiRequest.call(request.headers)
+    @current_user = authorization.result
+    render json: { message: 'Not Authorized', errors: authorization.errors }, status: 401 unless @current_user.moderator?
+  end
+
+  def require_verification
     @current_user = AuthorizeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user.moderator?
+    render json: { message: 'Not Authorized', error: "Phone number not verified" }, status: 401 unless @current_user.verified?
   end
 end
