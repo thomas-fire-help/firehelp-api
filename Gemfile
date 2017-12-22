@@ -9,6 +9,7 @@ end
 gem 'rails', '~> 5.1.4'
 
 gem 'bcrypt'
+gem 'bugsnag'
 gem 'coffee-rails'
 gem 'config'
 gem 'dotenv-rails'
