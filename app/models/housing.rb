@@ -32,6 +32,7 @@ class Housing < ApplicationRecord
   has_many :tags, :through => :tag_taggables
 
   validates :email_address, presence: true
+  validates :phone_number, presence: true
   validates :city, presence: true
   validates :beds, presence: true
   validates :paid, inclusion: { in: [ true, false ] }

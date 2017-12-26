@@ -1,0 +1,55 @@
+# == Schema Information
+#
+# Table name: volunteers
+#
+#  id                     :integer          not null, primary key
+#  skills                 :text
+#  number_of_volunteers   :integer
+#  volunteers_notes       :text
+#  organization           :string
+#  address                :string
+#  coordinates            :string
+#  contact_name           :string
+#  phone_number           :string
+#  email_address          :string
+#  additional_information :string
+#  user_id                :integer
+#  status                 :string           default("available")
+#  verified               :boolean          default(FALSE)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  volunteer_type         :string
+#  location               :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skills: MyText
+  number_of_volunteers: 1
+  volunteers_notes: MyText
+  organization: MyString
+  address: MyString
+  coordinates: MyString
+  contact_name: MyString
+  phone_number: MyString
+  email_address: MyString
+  additional_information: MyString
+  user_id: 1
+  status: MyString
+  verified: false
+
+two:
+  skills: MyText
+  number_of_volunteers: 1
+  volunteers_notes: MyText
+  organization: MyString
+  address: MyString
+  coordinates: MyString
+  contact_name: MyString
+  phone_number: MyString
+  email_address: MyString
+  additional_information: MyString
+  user_id: 1
+  status: MyString
+  verified: false

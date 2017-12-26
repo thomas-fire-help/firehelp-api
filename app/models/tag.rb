@@ -11,7 +11,7 @@
 
 class Tag < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :category }
-  validates :category, presence: true, inclusion: { in: %w(housing) }
+  validates :category, presence: true, inclusion: { in: %w(housing volunteer) }
   has_many :tag_taggables
   has_many :taggables, through: :tag_taggables
 

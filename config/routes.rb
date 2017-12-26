@@ -51,6 +51,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :volunteers
   resources :housings
   resources :tags
   resources :supplies_neededs
