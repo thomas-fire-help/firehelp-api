@@ -202,7 +202,7 @@ api :DELETE, '/housings/:id'
 # Volunteer
 ## Index
 ```
-api :GET, '/volunteer'
+api :GET, '/volunteers'
 param :page     Integer, desc: "What page to get"
 param :per_page Integer, default: 25 desc: "How many results per page"
 ```
@@ -231,7 +231,7 @@ api :GET, '/volunteer/:id'
 api :POST, '/volunteer'
 param :skills                 Text,  required: true
 param :number_of_volunteers   Integer, required: 'organization'
-param :volunteer_notes        Text, required: 'organization'
+param :volunteers_notes        Text, required: 'organization'
 param :organization           String, required: 'organization'
 param :address                String, required: 'organization'
 param :coordinates            String
