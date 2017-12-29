@@ -6,8 +6,6 @@
 #  city           :string
 #  beds           :integer
 #  length_of_stay :string
-#  child_friendly :boolean
-#  kid_notes      :text
 #  pets_accepted  :boolean
 #  pet_notes      :text
 #  contact_name   :string
@@ -40,7 +38,6 @@ class Housing < ApplicationRecord
   validates :contact_name, presence: true
   validates :length_of_stay, presence: true, inclusion: { in: %w(short long permanent) }
   validates :housing_type, presence: true, inclusion: { in: %w(house room) }
-  validates :child_friendly, inclusion: { in: [ true, false ] }
   validates :pets_accepted, inclusion: { in: [ true, false ] }
   validates :status, inclusion: { in: %w(available claimed archived) }
 

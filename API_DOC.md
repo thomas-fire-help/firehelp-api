@@ -162,8 +162,6 @@ param :price          String
 param :neighborhood   String
 param :housing_type   String, options: ['house', 'room'], required: true
 param :length_of_stay String,  options: ['short', 'long', 'permanent'], required: true
-param :child_friendly Boolean, required: true
-param :kid_notes      Text
 param :pets_accepted  Boolean, required: true
 param :pet_notes      Text
 param :contact_name   String,  required: true
@@ -182,8 +180,6 @@ api :PATCH/PUT, '/housings/:id'
 param :city           String,  required: true
 param :beds           Integer, required: true
 param :length_of_stay String,  options: ['short', 'long', 'permanent'], required: true
-param :child_friendly Boolean, required: true
-param :kid_notes      Text
 param :pets_accepted  Boolean, required: true
 param :pet_notes      Text
 param :contact_name   String,  required: true
@@ -214,7 +210,6 @@ Filterable Values:
 * `:city, type: :string`
 * `:bed, type: :string`
 * `:length_of_stay, type: :string`
-* `:child_friendly, type: :boolean`
 * `:pets_accepted, type: :boolean`
 * `:verified, type: :boolean`
 * `:paid, type: :boolean`

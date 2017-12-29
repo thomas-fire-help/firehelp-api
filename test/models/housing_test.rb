@@ -6,8 +6,6 @@
 #  city           :string
 #  beds           :integer
 #  length_of_stay :string
-#  child_friendly :boolean
-#  kid_notes      :text
 #  pets_accepted  :boolean
 #  pet_notes      :text
 #  contact_name   :string
