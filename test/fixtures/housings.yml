@@ -6,8 +6,6 @@
 #  city           :string
 #  beds           :integer
 #  length_of_stay :string
-#  child_friendly :boolean
-#  kid_notes      :text
 #  pets_accepted  :boolean
 #  pet_notes      :text
 #  contact_name   :string
@@ -32,8 +30,6 @@ one:
   city: MyString
   beds: 1
   length_of_stay: MyString
-  child_friendly: false
-  kid_notes: MyText
   pets_accepted: false
   pet_notes: MyText
   contact_name: MyString
@@ -48,8 +44,6 @@ two:
   city: MyString
   beds: 1
   length_of_stay: MyString
-  child_friendly: false
-  kid_notes: MyText
   pets_accepted: false
   pet_notes: MyText
   contact_name: MyString
