@@ -12,7 +12,7 @@ class HousingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create housing" do
     assert_difference('Housing.count') do
-      post housings_url, params: { housing: { beds: @housing.beds, child_friendly: @housing.child_friendly, city: @housing.city, contact_name: @housing.contact_name, email_address: @housing.email_address, kid_notes: @housing.kid_notes, length_of_stay: @housing.length_of_stay, notes: @housing.notes, pet_notes: @housing.pet_notes, pets_accepted: @housing.pets_accepted, phone_number: @housing.phone_number, status: @housing.status, user_id: @housing.user_id, verified: @housing.verified } }, as: :json
+      post housings_url, params: { housing: { beds: @housing.beds, city: @housing.city, contact_name: @housing.contact_name, email_address: @housing.email_address, length_of_stay: @housing.length_of_stay, notes: @housing.notes, pet_notes: @housing.pet_notes, pets_accepted: @housing.pets_accepted, phone_number: @housing.phone_number, status: @housing.status, user_id: @housing.user_id, verified: @housing.verified } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class HousingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update housing" do
-    patch housing_url(@housing), params: { housing: { beds: @housing.beds, child_friendly: @housing.child_friendly, city: @housing.city, contact_name: @housing.contact_name, email_address: @housing.email_address, kid_notes: @housing.kid_notes, length_of_stay: @housing.length_of_stay, notes: @housing.notes, pet_notes: @housing.pet_notes, pets_accepted: @housing.pets_accepted, phone_number: @housing.phone_number, status: @housing.status, user_id: @housing.user_id, verified: @housing.verified } }, as: :json
+    patch housing_url(@housing), params: { housing: { beds: @housing.beds, city: @housing.city, contact_name: @housing.contact_name, email_address: @housing.email_address, length_of_stay: @housing.length_of_stay, notes: @housing.notes, pet_notes: @housing.pet_notes, pets_accepted: @housing.pets_accepted, phone_number: @housing.phone_number, status: @housing.status, user_id: @housing.user_id, verified: @housing.verified } }, as: :json
     assert_response 200
   end
 
