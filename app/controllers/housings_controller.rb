@@ -7,7 +7,7 @@ class HousingsController < ApplicationController
   before_action :require_verification, only: [:create]
 
   filter_on :city,           type: :string
-  filter_on :bed,            type: :int
+  filter_on :beds,            type: :int
   filter_on :length_of_stay, type: :string
   filter_on :child_friendly, type: :boolean
   filter_on :pets_accepted,  type: :boolean

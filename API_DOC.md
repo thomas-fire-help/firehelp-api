@@ -146,6 +146,7 @@ Filterable Values:
 * `:volunteer_type,       type: :string`
 * `:location,             type: :string`
 * `:tag,                  type: :scope, internal_name: :by_tag`
+* `:beds,                 type: :int`
 ## Show
 ```
 api :GET, '/housings/:id'
