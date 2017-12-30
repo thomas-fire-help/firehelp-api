@@ -41,7 +41,7 @@ namespace :import do
                           housing_type:   row[:housing_type],
                           pets_accepted:   row[:pets_accepted] == "true" ? true : false,
                           price:          row[:price])
-     # binding.pry if row[:city].blank?
+
      if house.save
        created += 1
        puts "INDEX #{total} CREATED"
