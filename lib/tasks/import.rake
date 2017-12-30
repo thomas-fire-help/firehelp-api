@@ -7,23 +7,22 @@ namespace :import do
     failed  = 0
     total   = 1
 
-    CSV.foreach('lib/tasks/csvs/HousingData_12.23.17-2.csv', headers: true, header_converters: :symbol) do |row|
+    CSV.foreach('lib/tasks/csvs/HousingData_12.23.17-4.csv', headers: true, header_converters: :symbol, skip_blanks: true) do |row|
       puts "\n\n#################################################################"
       puts "INDEX:          #{total}"
       puts "city:           #{row[:city]}"
-      puts "beds:           #{row[:beds]}"
+      puts "beds:           #{row[:beds].to_i}"
       puts "length_of_stay: #{row[:length_of_stay]}"
-      puts "kid_notes:      #{row[:kid_notes]}"
       puts "contact_name:   #{row[:contact_name]}"
       puts "phone_number:   #{row[:phone_number]}"
       puts "email_address:  #{row[:email_address]}"
       puts "notes:          #{row[:notes]}"
       puts "status:         #{row[:status]}"
-      puts "verified:       #{row[:verified] || false}"
-      puts "paid:           #{row[:paid]}"
+      puts "verified:       #{row[:verified] == "true" ? true : false}"
+      puts "paid:           #{row[:paid] == "true" ? true : false}"
       puts "neighborhood:   #{row[:neighborhood]}"
       puts "housing_type:   #{row[:housing_type]}"
-      puts "has_animals:    #{row[:has_animals] || false}"
+      puts "pets_accepted:  #{row[:pets_accepted] == "true" ? true : false}"
       puts "price:          #{row[:price]}"
 
       total += 1
@@ -31,18 +30,18 @@ namespace :import do
                           city:           row[:city],
                           beds:           row[:beds],
                           length_of_stay: row[:length_of_stay],
-                          kid_notes:      row[:kid_notes],
                           contact_name:   row[:contact_name],
                           phone_number:   row[:phone_number],
                           email_address:  row[:email_address],
                           notes:          row[:notes],
                           status:         row[:status],
-                          verified:       row[:verified] || false,
-                          paid:           row[:paid] || false,
+                          verified:       row[:verified] == "true" ? true : false,
+                          paid:           row[:paid] == "true" ? true : false,
                           neighborhood:   row[:neighborhood],
                           housing_type:   row[:housing_type],
-                          has_animals:    row[:has_animals] || false,
+                          pets_accepted:   row[:pets_accepted] == "true" ? true : false,
                           price:          row[:price])
+     # binding.pry if row[:city].blank?
      if house.save
        created += 1
        puts "INDEX #{total} CREATED"
