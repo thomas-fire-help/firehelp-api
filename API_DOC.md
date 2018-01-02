@@ -156,7 +156,7 @@ api :GET, '/housings/:id'
 api :POST, '/housings'
 param :city           String,  required: true
 param :beds           Integer, required: true
-param :has_animals    Boolean, required: true
+param :has_animals    Boolean
 param :paid           Boolean, required: true
 param :price          String
 param :neighborhood   String
