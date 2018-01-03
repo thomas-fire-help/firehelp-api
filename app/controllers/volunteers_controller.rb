@@ -22,7 +22,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   # GET /volunteers.json
   def index
-    @volunteers = filtrate(Volunteer.active).page((params[:page] || 0)).per((params[:per_page] || Settings.default.per_page))
+    @volunteers = filtrate(Volunteer.active.order("updated_at DESC")).page((params[:page] || 0)).per((params[:per_page] || Settings.default.per_page))
   end
 
   # GET /volunteers/1
