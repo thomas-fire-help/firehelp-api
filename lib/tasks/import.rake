@@ -18,11 +18,11 @@ namespace :import do
       puts "email_address:  #{row[:email_address]}"
       puts "notes:          #{row[:notes]}"
       puts "status:         #{row[:status]}"
-      puts "verified:       #{row[:verified] == "true" ? true : false}"
-      puts "paid:           #{row[:paid] == "true" ? true : false}"
+      puts "verified:       #{row[:verified].strip == "true" ? true : false}"
+      puts "paid:           #{row[:paid].strip == "true" ? true : false}"
       puts "neighborhood:   #{row[:neighborhood]}"
       puts "housing_type:   #{row[:housing_type]}"
-      puts "pets_accepted:  #{row[:pets_accepted] == "true" ? true : false}"
+      puts "pets_accepted:  #{row[:pets_accepted].strip == "true" ? true : false}"
       puts "price:          #{row[:price]}"
 
       total += 1
@@ -35,11 +35,11 @@ namespace :import do
                           email_address:  row[:email_address],
                           notes:          row[:notes],
                           status:         row[:status],
-                          verified:       row[:verified] == "true" ? true : false,
-                          paid:           row[:paid] == "true" ? true : false,
+                          verified:       row[:verified].strip == "true" ? true : false,
+                          paid:           row[:paid].strip == "true" ? true : false,
                           neighborhood:   row[:neighborhood],
                           housing_type:   row[:housing_type],
-                          pets_accepted:   row[:pets_accepted] == "true" ? true : false,
+                          pets_accepted:   row[:pets_accepted].strip == "true" ? true : false,
                           price:          row[:price])
 
      if house.save
