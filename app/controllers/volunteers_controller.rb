@@ -42,10 +42,10 @@ class VolunteersController < ApplicationController
       if @volunteer.save
         render :show, status: :created, location: @volunteer
       else
-        render json: @volunteer.errors, status: :unprocessable_entity
+        render json: { errors: @volunteer.errors }, status: :unprocessable_entity
       end
     else
-      render json: @volunteer.errors, status: :unprocessable_entity
+      render json: { errors: @volunteer.errors }, status: :unprocessable_entity
     end
   end
 
